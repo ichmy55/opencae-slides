@@ -1,0 +1,8 @@
+services:
+  beamer-example:
+    build: "."
+    restart: always
+    tty: true
+    user: "1000:1000"
+
+

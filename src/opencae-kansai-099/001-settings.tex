@@ -1,0 +1,67 @@
+%
+% パッケージの選択
+%
+\usepackage{luatexja}% 日本語に
+\usepackage[haranoaji,deluxe]{luatexja-preset}% フォント指定
+\renewcommand{\kanjifamilydefault}{\gtdefault}% 既定をゴシック体に
+\usepackage{url}              % LaTeXの文章内にURLを貼りたいとき
+\usepackage{hyperref}         % TeX 文書（DVI、PDF など）に HTML と同じハイパーリンク 機能を加えるためのマクロ
+\usepackage{siunitx}          % LATEX で SI単位（国際単位系）を出力する
+\usepackage{enumitem}         % リスト環境のレイアウトを制御
+\usepackage{tikz}             % TeX 用の描画パッケージ
+\usepackage{
+    amsmath, % 環境
+    amssymb, % 記号
+    amsfonts % 特殊文字
+}                             % amsmathの数式環境
+\usetikzlibrary{positioning}  % ”positioning”ライブラリ
+%
+% デザインの選択
+%     ここではテーマとしてmetropolisを読込
+%
+\usetheme[
+    block=fill, % ブロックに背景をつける
+    numbering=fraction % 合計ページ数を表示
+]{metropolis}
+
+%
+% ここからはページの見え方の設定
+%
+% ページ番号
+\setbeamerfont{frame numbering}{size=\large}
+%
+% CUD 配色の作成
+% cf. http://bit.ly/2G99WCG
+\definecolor{cud_blue}{rgb}{.109803922,.349019608,.682352941}
+\definecolor{cud_green}{rgb}{.282352941,.639215686,.407843137}
+\definecolor{cud_orange}{rgb}{.929411765,.564705882,.156862745}
+\definecolor{cud_lightgray}{rgb}{.784313725,.784313725,.796078431}
+%
+% 基本色の変更
+\setbeamercolor{normal text}{fg=cud_blue}
+\setbeamercolor{example text}{fg=cud_green}
+\setbeamercolor{alerted text}{fg=cud_orange}
+%
+% Navigation symbol は不要なので消す
+\setbeamertemplate{navigation symbols}{}
+%
+%footer修正
+\def\logoC{opencae-logo.png}
+\def\logoD{kotohajime.png}
+\makeatletter
+\setbeamertemplate{footline}{
+    \begin{columns}[totalwidth=160mm]
+      \begin{column}{24.1mm}
+        \includegraphics[width=24.1mm, height=5mm]{work/images/\logoC}
+      \end{column}
+      \begin{column}{104mm}
+         {\scriptsize \color{cud_lightgray} \insertshortinstitute ／ \insertshortdate{} 　(\insertshortauthor) }
+      \end{column}
+      \begin{column}{16mm}
+         {\footnotesize \color{cud_orange} \rightline{ \insertframenumber{} / \inserttotalframenumber}}
+      \end{column}
+      \begin{column}{15mm}
+        \includegraphics[width=15mm, height=5mm]{work/images/\logoD}
+      \end{column}
+    \end{columns}
+}
