@@ -9,7 +9,7 @@ LATEXENG := lualatex
 #
 # 作成するスライド名
 #
-DEST_PDF := opencae-kansai-099
+DEST_PDF := opencae-kantou-s-025
 #
 # ソースファイル一覧
 #
@@ -91,5 +91,4 @@ localclean:
 	rm -rf  000-main.* work/* $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF)))
 
 localup:
-	cp $(SRCDIR)/* work/
-	cp -r src/images work/
+	cp -r $(SRCDIR)/* work/
