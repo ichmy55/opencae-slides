@@ -59,8 +59,6 @@ clean:
 	@$(COMPOSE) exec -it opencae-slides rm -rf *
 	@$(COMPOSE) cp Makefile opencae-slides:/home/user/
 	@$(COMPOSE) cp src opencae-slides:/home/user/src
-	@$(COMPOSE) exec -it opencae-slides mkdir dist
-	@$(COMPOSE) exec -it opencae-slides mkdir work
 #
 # コンテナ上のビルド
 # 
@@ -89,7 +87,7 @@ $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS)
 	rm -f 000-main.*
 
 localclean:
-	rm -rf  000-main.* work/* dist/*
+	rm -rf  000-main.* work dist; mkdir -p dist work
 
 localup:
 	cp -r $(SRCDIR)/* work/
