@@ -1,5 +1,5 @@
 services:
-  beamer-example:
+  opencae-slides:
     build: "."
     restart: always
     tty: true
