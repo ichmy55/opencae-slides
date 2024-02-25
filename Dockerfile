@@ -20,9 +20,3 @@ RUN groupadd -g $GID $GROUPNAME && \
     echo "$USERNAME   ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 USER $USERNAME
 WORKDIR /home/$USERNAME/
-
-#COPY --chown=$UID:$GID Makefile  /home/$USERNAME/
-#COPY --chown=$UID:$GID src  /home/$USERNAME/src
-#COPY --chown=$UID:$GID dist /home/$USERNAME/dist
-
-#RUN make localbuild

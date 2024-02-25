@@ -9,7 +9,7 @@ LATEXENG := lualatex
 #
 # 作成するスライド名
 #
-DEST_PDF := opencae-kantou-s-025
+DEST_PDF := opencae-kansai-099
 #
 # ソースファイル一覧
 #
@@ -56,22 +56,23 @@ down:
 # コンテナ上のデータ整理（いったん全部消して、ローカルから持上）
 # 
 clean:
-	@$(COMPOSE) exec -it beamer-example rm -rf *
-	@$(COMPOSE) cp Makefile beamer-example:/home/user/
-	@$(COMPOSE) cp src beamer-example:/home/user/src
-	@$(COMPOSE) exec -it beamer-example mkdir dist
+	@$(COMPOSE) exec -it opencae-slides rm -rf *
+	@$(COMPOSE) cp Makefile opencae-slides:/home/user/
+	@$(COMPOSE) cp src opencae-slides:/home/user/src
+	@$(COMPOSE) exec -it opencae-slides mkdir dist
+	@$(COMPOSE) exec -it opencae-slides mkdir work
 #
 # コンテナ上のビルド
 # 
 build:
 	make clean
-	@$(COMPOSE) exec -it beamer-example make localbuild
-	@$(COMPOSE) cp beamer-example:/home/user/dist .
+	@$(COMPOSE) exec -it opencae-slides make localbuild
+	@$(COMPOSE) cp opencae-slides:/home/user/dist .
 #
 # コンテナへのログイン
 # 
 bash:
-	@$(COMPOSE) exec -it beamer-example bash
+	@$(COMPOSE) exec -it opencae-slides bash
 #
 # ローカルでのビルド関連ターゲット
 #
@@ -88,7 +89,7 @@ $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS)
 	rm -f 000-main.*
 
 localclean:
-	rm -rf  000-main.* work/* $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF)))
+	rm -rf  000-main.* work/* dist/*
 
 localup:
 	cp -r $(SRCDIR)/* work/
