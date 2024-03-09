@@ -10,7 +10,7 @@
 \usepackage{dcolumn}          % 小数点揃え
 \usepackage{enumitem}         % リスト環境のレイアウトを制御
 \usepackage{booktabs}         % 表作成
-\usepackage{multirow}         % 表作成
+\usepackage{multirow}         % 表作成時に表を縦結合する
 \usepackage{tikz}             % TeX 用の描画パッケージ
 \usepackage{
     amsmath, % 環境
@@ -76,7 +76,7 @@
 %
 %footer修正
 \def\logoC{opencae-logo.png}
-\def\logoD{kotohajime.png}
+\def\logoD{by.png}
 \makeatletter
 \setbeamertemplate{footline}{
     \begin{columns}[totalwidth=160mm]
@@ -87,7 +87,7 @@
          {\scriptsize \color{cud_lightgray} \insertshortinstitute ／ \insertshortdate{} 　(\insertshortauthor) }
       \end{column}
       \begin{column}{16mm}
-         {\footnotesize \color{cud_orange} \rightline{ \insertframenumber{} / \inserttotalframenumber}}
+         {\footnotesize \color{cud_green} \rightline{ \insertframenumber{} / \inserttotalframenumber}}
       \end{column}
       \begin{column}{15mm}
         \includegraphics[width=15mm, height=5mm]{work/images/\logoD}
