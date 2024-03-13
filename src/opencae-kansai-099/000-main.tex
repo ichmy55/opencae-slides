@@ -1,10 +1,10 @@
-\documentclass[%
-  unicode, % 文字コードの指定
-  mathserif, %
-  m, % vertical position of text: (t,m,b)
-  % handout, % for printing slides
-  aspectratio=169,
-  12pt, %
+\documentclass[               %
+  unicode,                    % 文字コードの指定
+  mathserif,                  %
+  m,                          % vertical position of text: (t,m,b)
+  % handout,                  % for printing slides
+  aspectratio=169,            % 画面サイズを(16:9)にする
+  12pt,                       % フォント基本サイズを12ptにします
   % compress,
   unknownkeysallowed
 ]{beamer}
@@ -18,20 +18,26 @@
 %
 \begin{document}
   %
-  \maketitle                    % 表紙の出力指示(省略してもよい)
+  \maketitle                      % 表紙の出力指示
+  \input{work/003-abstract}       % はじめに
+  \input{work/004-index-0}        % 目次
   %%%
-  \input{work/011-abstract}
-  \input{work/012-contents-1}
-  %\input{src/012-chapter1-2}
-  %\input{src/013-chapter1-3}
-  %\input{src/014-chapter1-4}
-  %\input{src/015-chapter1-5}
   %%%
-  \input{work/021-self-introduce}
+  \input{work/010-index-1}        % 
+  \input{work/011-self-introduce} % 自己紹介
   %%%
-  \input{work/031-chapter3-1}
-  \input{work/032-chapter3-2}
-  \input{work/033-chapter3-3}
+  \input{work/020-index-2}     % 
+  %%%
+  \input{work/030-index-3}     % 
+  %%%
+  \input{work/040-index-4}     % 
+  %%%
+  \input{work/050-index-5}     % 
+  \input{work/051-chapter5-1}
+  \input{work/052-chapter5-2}
+  \input{work/053-chapter5-3}
+  %%%
+  \input{work/060-index-6}     % 
   %%%
   \input{work/081-references}
   \input{work/091-closing}
