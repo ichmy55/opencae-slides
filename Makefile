@@ -1,4 +1,7 @@
 #
+# Texをコンパイルする環境を作成する Makefile
+#
+#
 # Docker コマンドマクロ
 #
 COMPOSE := docker compose
@@ -9,7 +12,7 @@ LATEXENG := lualatex
 #
 # 作成するスライド名
 #
-DEST_PDF := opencae-kansai-100
+DEST_PDF := opencae-kansai-099
 #
 # ソースファイル一覧
 #

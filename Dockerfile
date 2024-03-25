@@ -1,3 +1,6 @@
+#
+# Tex をコンパイルする環境をDocker上に作成する
+#
 FROM ubuntu:latest
 
 ENV TZ=Asia/Tokyo
