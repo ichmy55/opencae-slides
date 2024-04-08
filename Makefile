@@ -12,7 +12,7 @@ LATEXENG := lualatex
 #
 # 作成するスライド名
 #
-DEST_PDF := opencae-kansai-099
+DEST_PDF := opencae-kantou-s-026
 #
 # ソースファイル一覧
 #
