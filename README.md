@@ -10,7 +10,7 @@ docker上にソースを転送したうえでコンパイルすることで、�
 ## Requirement
 現時点では、本ソースを動かすコンピュータ環境はUbuntuを想定しています。  
 （将来的には、他OSでも動作可能にする予定)  
-dockerとdocker-comopseのインストールをお願いします。(ローカルでコンパイル時は不要)  
+dockerとdocker-composeのインストールをお願いします。(ローカルでコンパイル時は不要)  
 また、本ソースコードをダウンロードするためにgitもインストールをお願いします。
 
 ## Installation
@@ -30,7 +30,8 @@ $ git clone https://github.com/ichmy55/opencae-slides.git
 ├── docker-compose.yml
 ├── src ......................このディレクトリにTexのソースファイルを配置します
 │   └── opencae-kantou-s-025..ソースは勉強会毎のディレクトリにそれぞれ入れます
-│   └── opencae-kansai-099....ソースは勉強会毎のディレクトリにそれぞれ入れます
+│   └── opencae-kantou-s-026..ソースは勉強会毎のディレクトリにそれぞれ入れます
+│         ├── geometry........使用する形状ファイルを入れます
 │         └── images..........勉強会毎のディレクトリにTexから読み込む画像ファイルを入れます
 ├── dist......................このディレクトリに結果pdfが生成されます。Make時に生成されます
 └── work......................ワーク用です。Make時に生成されます
@@ -42,7 +43,7 @@ Makefile 中の変数「DEST_PDF」の値を、PDF作成したい勉強会のデ
 #
 # 作成するスライド名
 #
-DEST_PDF := opencae-kansai-099
+DEST_PDF := opencae-kantou-s-026
 ```
 
 ## Usage

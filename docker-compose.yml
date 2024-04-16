@@ -1,3 +1,6 @@
+#
+# Tex をコンパイルする環境をDocker上に作成する
+#
 services:
   opencae-slides:
     build: "."
