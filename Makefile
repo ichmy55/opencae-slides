@@ -12,7 +12,7 @@ LATEXENG := lualatex
 #
 # 作成するスライド名
 #
-DEST_PDF := opencae-kantou-s-026
+DEST_PDF := opencae-kantou-s-027
 #
 # ソースファイル一覧
 #
@@ -60,15 +60,15 @@ down:
 # 
 clean:
 	@$(COMPOSE) exec -it opencae-slides rm -rf *
-	@$(COMPOSE) cp Makefile opencae-slides:/home/user/
-	@$(COMPOSE) cp src opencae-slides:/home/user/src
+	@$(COMPOSE) cp Makefile opencae-slides:/home/ubuntu/
+	@$(COMPOSE) cp src opencae-slides:/home/ubuntu/src
 #
 # コンテナ上のビルド
 # 
 build:
 	make clean
 	@$(COMPOSE) exec -it opencae-slides make localbuild
-	@$(COMPOSE) cp opencae-slides:/home/user/dist .
+	@$(COMPOSE) cp opencae-slides:/home/ubuntu/dist .
 #
 # コンテナへのログイン
 # 

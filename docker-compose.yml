@@ -6,6 +6,6 @@ services:
     build: "."
     restart: always
     tty: true
-    user: "1000:1000"
+    user: "ubuntu"
 
 
