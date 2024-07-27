@@ -28,6 +28,7 @@ $ git clone https://github.com/ichmy55/opencae-slides.git
 ├── Makefile
 ├── README.md
 ├── docker-compose.yml
+├── .textlintrc.json..........自動校正textlint用ルールファイル
 ├── src ......................このディレクトリにTexのソースファイルを配置します
 │   └── opencae-kantou-s-025..ソースは勉強会毎のディレクトリにそれぞれ入れます
 │   └── opencae-kantou-s-027..ソースは勉強会毎のディレクトリにそれぞれ入れます
