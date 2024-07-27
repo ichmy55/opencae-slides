@@ -11,6 +11,8 @@ RUN apt -y upgrade
 RUN apt -y install sudo make fontconfig
 RUN apt -y install texlive-full
 RUN apt -y install fonts-firacode fonts-noto
+RUN apt -y install nodejs npm
+RUN npm install -g textlint  textlint-plugin-latex2e
 
 ARG USERNAME=ubuntu
 ARG GROUPNAME=ubuntu

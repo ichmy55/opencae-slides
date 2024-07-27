@@ -17,7 +17,8 @@ DEST_PDF := opencae-kantou-s-027
 # ソースファイル一覧
 #
 SRCDIR := src/$(DEST_PDF)
-SRCS := $(wildcard  $(SRCDIR)/*.tex) $(wildcard src/images/*)
+SRCS   := $(wildcard  $(SRCDIR)/*.tex)
+SRCS2  := $(SRCS) $(wildcard src/images/*)
 
 #
 # Latex コンパイル方法の定義マクロ
@@ -32,7 +33,7 @@ endef
 #
 # ターゲット一覧
 #
-.PHONY: first up ps stop down  clean build bash localbuild localclean localup localtest
+.PHONY: first up ps stop down  clean build bash localbuild localclean localup localtest local-lint
 #
 first: localbuild
 #
@@ -81,7 +82,7 @@ localbuild: pdf-files
 
 pdf-files: $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF)))
 
-$(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS)
+$(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS2)
 	make localclean
 	make localup
 	@$(LATEXENG) work/000-main.tex
@@ -94,3 +95,6 @@ localclean:
 
 localup:
 	cp -rL $(SRCDIR)/* work/
+
+local-lint:
+	textlint README.md $(SRCS)

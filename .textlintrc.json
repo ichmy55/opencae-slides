@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    "latex2e"
+  ],
+  "filters": {
+    "comments": true
+  },
+  "rules": {
+    "preset-ja-spacing": true,
+    "preset-ja-technical-writing": {
+      "max-kanji-continuous-len": false,
+      "sentence-length": false,
+      "ja-no-mixed-period": false
+    }
+  }
+}
