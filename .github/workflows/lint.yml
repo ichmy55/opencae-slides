@@ -1,0 +1,55 @@
+name: On push Actions
+
+on: [push,workflow_dispatch]
+
+env:
+  DAY_OF_WEEK: Monday
+
+jobs:
+  echo_hello:
+    runs-on: ubuntu-24.04
+    steps: 
+      - name: "挨拶"
+        run: echo "Nice to meet you!!"
+
+      - name: "Bash 実行のデバッグ情報出力"
+        run: set -x
+
+  greeting_job:
+    runs-on: ubuntu-24.04
+    env:
+      Greeting: Hello
+    steps:
+      - name: "Say Hello Mona it's Monday"
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
+
+  command:
+    name: Use Linux commands
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Show ubuntu details
+        run: lsb_release -a
+      - name: Inspect files before checkout
+        run: ls -la
+      - name: show current directory before checkout
+        run: pwd
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Inspect files after checkout
+        run: ls -la
+      - name: show current directory after checkout
+        run: pwd
+      - name: show all branches after checkout
+        run: git branch -a
+
+  if-Windows-else:
+    runs-on: macos-latest
+    steps:
+      - name: condition 1
+        if: runner.os == 'Windows'
+        run: echo "The operating system on the runner is $env:RUNNER_OS."
+      - name: condition 2
+        if: runner.os != 'Windows'
+        run: echo "The operating system on the runner is not Windows, it's $RUNNER_OS."
