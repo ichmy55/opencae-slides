@@ -4,7 +4,9 @@
 #
 # Docker コマンドマクロ
 #
-COMPOSE := docker compose
+DOCKER := docker
+DOCKER_IMAGE := ghcr.io/ichmy55/opencae-slides:main
+DOCKER_NAME  := opencae-slides
 #
 # Latex エンジン
 #
@@ -41,40 +43,42 @@ first: localbuild
 #
 # コンテナを初期設定します
 up:
-	@$(COMPOSE) up -d
+	$(DOCKER) pull $(DOCKER_IMAGE)
+	$(DOCKER) rm -f  $(DOCKER_NAME)
+	$(DOCKER) run -d --name $(DOCKER_NAME) $(DOCKER_IMAGE) sleep infinity
 	make clean
 #
 # コンテナを確認します
 ps:
-	@$(COMPOSE) ps
+	@$(DOCKER) ps -a
 #
 # コンテナの停止
 stop:
-	@$(COMPOSE) stop
+	@$(DOCKER) stop $(DOCKER_NAME)
 #
 # コンテナを停止し，upで作成したコンテナ，ネットワーク，ボリューム，イメージを削除
 # 
 down:
-	@$(COMPOSE) down --rmi all
+	$(DOCKER) rm -f  $(DOCKER_NAME)
 #
 # コンテナ上のデータ整理（いったん全部消して、ローカルから持上）
 # 
 clean:
-	@$(COMPOSE) exec -it opencae-slides rm -rf *
-	@$(COMPOSE) cp Makefile opencae-slides:/home/ubuntu/
-	@$(COMPOSE) cp src opencae-slides:/home/ubuntu/src
+	@$(DOCKER) exec -it opencae-slides rm -rf *
+	@$(DOCKER) cp Makefile opencae-slides:/home/ubuntu/
+	@$(DOCKER) cp src opencae-slides:/home/ubuntu/src
 #
 # コンテナ上のビルド
 # 
 build:
 	make clean
-	@$(COMPOSE) exec -it opencae-slides make localbuild
-	@$(COMPOSE) cp opencae-slides:/home/ubuntu/dist .
+	@$(DOCKER) exec -it opencae-slides make localbuild
+	@$(DOCKER) cp opencae-slides:/home/ubuntu/dist .
 #
 # コンテナへのログイン
 # 
 bash:
-	@$(COMPOSE) exec -it opencae-slides bash
+	@$(DOCKER) exec -it opencae-slides bash
 #
 # ローカルでのビルド関連ターゲット
 #
