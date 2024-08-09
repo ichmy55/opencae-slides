@@ -1,0 +1,19 @@
+name: On push Actions
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  build:
+    name: Build the beamer PDF  image
+    runs-on: ubuntu-24.04
+    container:
+      image : ghcr.io/ichmy55/opencae-slides:main
+    steps:
+      - name: "Checkout  repository"
+        uses: actions/checkout@v4
+
+      - name: "insert source code to docker"
+        run:  make buld 

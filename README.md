@@ -31,7 +31,6 @@ $ git clone https://github.com/ichmy55/opencae-slides.git
 ├── Dockerfile
 ├── Makefile
 ├── README.md
-├── docker-compose.yml
 ├── .github
 │   └── workflow .............GithubでのCI/CO設定ファイルを入れます
 ├── .textlintrc.json..........自動校正textlint用ルールファイル
