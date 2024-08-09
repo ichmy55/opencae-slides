@@ -20,5 +20,6 @@ USER $USERNAME
 WORKDIR /home/$USERNAME/
 COPY src /home/$USERNAME/src
 COPY Makefile /home/$USERNAME/
+RUN  chown -R ubuntu:ubuntu .
 RUN  make localbuild
 RUN  make localclean
