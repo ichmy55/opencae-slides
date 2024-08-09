@@ -22,4 +22,4 @@ COPY src /home/$USERNAME/src
 COPY Makefile /home/$USERNAME/
 RUN  make localbuild
 RUN  make localclean
-RUN  rm -f src
+RUN  rm -f -r src
