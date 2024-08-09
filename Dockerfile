@@ -18,8 +18,8 @@ ARG USERNAME=ubuntu
 ARG GROUPNAME=ubuntu
 USER $USERNAME
 WORKDIR /home/$USERNAME/
-COPY src /home/$USERNAME/src
-COPY Makefile /home/$USERNAME/
+COPY --chown=$USERNAME:$GROUPNAME src /home/$USERNAME/src
+COPY --chown=$USERNAME:$GROUPNAME Makefile /home/$USERNAME/
 RUN  make localbuild
 RUN  make localclean
-RUN  rm -f -r src
+RUN  rm -r src/*
