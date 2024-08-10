@@ -11,12 +11,14 @@ jobs:
     runs-on: ubuntu-24.04
     container:
       image : ghcr.io/ichmy55/opencae-slides:main
-      options: --user ubuntu
+      options: --user 1001
     steps:
       - name: "Test"
         run:  |
           echo ---
           pwd
+          echo ---
+          who am i
           echo ---
           ls -al
           echo ---
