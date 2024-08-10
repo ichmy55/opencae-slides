@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-24.04
     container:
       image : ghcr.io/ichmy55/opencae-slides:main
+    environment:
+      - USER_ID=1000
+      - GROUP_ID=1000
     steps:
       - name: "Test"
         run:  |
