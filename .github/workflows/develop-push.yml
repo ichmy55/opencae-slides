@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     container:
       image : ghcr.io/ichmy55/opencae-slides:main
-      options: --user 1001  --group 118
+      options: --user 1001:118
     steps:
       - name: "Test"
         run:  |
