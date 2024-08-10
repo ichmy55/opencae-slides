@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     container:
       image : ghcr.io/ichmy55/opencae-slides:main
-      options: --user 1001
+      options: --user 1001  --group 118
     steps:
       - name: "Test"
         run:  |
@@ -29,6 +29,13 @@ jobs:
           who
           echo ---
           echo qwe > qwe.txt
+          echo ---
+          ls -al
+          echo ---
+      - name: "Checkout  repository"
+        uses: actions/checkout@v4
+      - name: "Test2"
+        run:  |
           echo ---
           ls -al
           echo ---
