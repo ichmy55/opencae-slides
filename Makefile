@@ -101,4 +101,4 @@ localup:
 	cp -rL $(SRCDIR)/* work/
 
 local-lint:
-	textlint README.md $(SRCS)
+	textlint -f pretty-error README.md $(SRCS)

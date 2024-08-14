@@ -15,7 +15,7 @@ RUN apt -y install sudo make fontconfig
 RUN apt -y install texlive-full
 RUN apt -y install fonts-firacode fonts-noto
 RUN apt -y install nodejs npm
-RUN npm install -g textlint  textlint-plugin-latex2e
+RUN npm install -g textlint  textlint-plugin-latex2e textlint-rule-preset-japanese
 
 #
 # コンパイル環境を作成します
