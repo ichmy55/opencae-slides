@@ -6,11 +6,11 @@
     "comments": true
   },
   "rules": {
-    "preset-ja-spacing": true,
-    "prh": {
-      "rulePaths": [
-        "rules/prh.yml"
-      ]
-    }
+      "preset-ja-spacing": true,
+      "prh": {
+        "rulePaths": [
+          "rules/prh.yml"
+        ]
+      }
   }
 }
