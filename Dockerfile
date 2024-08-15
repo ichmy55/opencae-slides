@@ -15,7 +15,6 @@ RUN apt -y install sudo make fontconfig
 RUN apt -y install texlive-full
 RUN apt -y install fonts-firacode fonts-noto
 RUN apt -y install nodejs npm
-RUN npm install -g textlint  textlint-plugin-latex2e textlint-rule-preset-japanese textlint-rule-prh
 
 #
 # コンパイル環境を作成します
@@ -29,6 +28,11 @@ USER $USERNAME
 WORKDIR /home/$USERNAME/
 COPY --chown=$USERNAME:$GROUPNAME src /home/$USERNAME/src
 COPY --chown=$USERNAME:$GROUPNAME Makefile /home/$USERNAME/
+COPY --chown=$USERNAME:$GROUPNAME README.md /home/$USERNAME/
+COPY --chown=$USERNAME:$GROUPNAME .textlintrc.json /home/$USERNAME/
+RUN  npm install textlint
+RUN  npm install textlint-plugin-latex2e
+RUN  npm install textlint-rule-preset-japanese textlint-rule-prh
 RUN  make localbuild
 RUN  make localclean
-RUN  rm -r src/*
+RUN  rm -r src/* Makefile README.md .textlintrc.json

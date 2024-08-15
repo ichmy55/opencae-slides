@@ -66,6 +66,7 @@ down:
 clean:
 	@$(DOCKER) exec -it opencae-slides rm -rf *
 	@$(DOCKER) cp Makefile opencae-slides:/home/ubuntu/
+	@$(DOCKER) cp README.md opencae-slides:/home/ubuntu/
 	@$(DOCKER) cp .textlintrc.json opencae-slides:/home/ubuntu/
 	@$(DOCKER) cp src opencae-slides:/home/ubuntu/src
 #
@@ -108,4 +109,4 @@ localup:
 	cp -rL $(SRCDIR)/* work/
 
 local-lint:
-	textlint -f pretty-error README.md $(SRCS)
+	npx textlint -f pretty-error README.md $(SRCS)
