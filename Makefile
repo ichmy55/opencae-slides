@@ -66,6 +66,7 @@ down:
 clean:
 	@$(DOCKER) exec -it opencae-slides rm -rf *
 	@$(DOCKER) cp Makefile opencae-slides:/home/ubuntu/
+	@$(DOCKER) cp .textlintrc.json opencae-slides:/home/ubuntu/
 	@$(DOCKER) cp src opencae-slides:/home/ubuntu/src
 #
 # コンテナ上のビルド
@@ -74,6 +75,12 @@ build:
 	make clean
 	@$(DOCKER) exec -it opencae-slides make localbuild
 	@$(DOCKER) cp opencae-slides:/home/ubuntu/dist .
+#
+# コンテナ上のLint
+# 
+lint:
+	make clean
+	@$(DOCKER) exec -it opencae-slides make local-lint
 #
 # コンテナへのログイン
 # 

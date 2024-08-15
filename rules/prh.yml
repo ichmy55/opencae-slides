@@ -1,0 +1,9 @@
+version: 1
+imports:
+  - path: ./WEB+DB_PRESS.yml
+    disableImports: true
+    ignoreRules:
+      - expected: 始め
+      - expected: 進$1 
+  - path: ./Opencae-socj.yml
+    disableImports: true
