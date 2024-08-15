@@ -23,3 +23,6 @@ jobs:
           name: dist-pdf
           path: dist/**
           retention-days: 5
+      - name: "Check textlint"
+        if: failure() # 上記Build の成功/失敗にかかわらず実施
+        run:  make local-lint
