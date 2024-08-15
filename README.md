@@ -31,10 +31,9 @@ $ git clone https://github.com/ichmy55/opencae-slides.git
 ├── Dockerfile
 ├── Makefile
 ├── README.md
-├── .github
-│   └── workflow .............GitHubでのCI/CO設定ファイルを入れます.
+├── .github/workflow .........GitHubでのCI/CO設定ファイル.
 ├── .textlintrc.json..........自動校正textlint用ルールファイル.
-├── rules ....................自動校正prh用辞書ファイル
+├── rules ....................自動校正prh用辞書ファイル.
 ├── src ......................このディレクトリにTexのソースファイルを配置します.
 │   └── opencae-kantou-s-025..ソースは勉強会毎のディレクトリにそれぞれ入れます.
 │   └── opencae-kantou-s-027..ソースは勉強会毎のディレクトリにそれぞれ入れます.
@@ -67,8 +66,8 @@ Dokerfileを参考にして,設定してください.
 <!-- textlint-enable prh -->
 | ルール名 | ルール概要 | ルールの配布元 |
 | ---- | ---- | ---- |
-| preset-ja-spacing |日本語周りにおけるスペースの有無| [GitHub](github.com/textlint-ja/textlint-rule-preset-ja-spacing)|
-| prh |表記ゆれの修正のための辞書ベースのツール| [GitHub](github.com/textlint-ja/textlint-rule-preset-ja-spacing)|
+| preset-ja-spacing |日本語周りにおけるスペースの有無| [GitHub](https://github.com/textlint-ja/textlint-rule-preset-ja-spacing)|
+| textlint-rule-prh |表記ゆれの修正のための辞書ベースのツール| [GitHub](https://github.com/textlint-rule/textlint-rule-prh)|
 
 ## Distribution
 生成したスライドPDFは,[Docswell](https://www.docswell.com/user/ichmy55) にて公開しています.
