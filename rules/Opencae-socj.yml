@@ -1,0 +1,10 @@
+# Rules for OpenFOAM マニュアル和訳における LaTeX コーディング・ルール
+
+version: 1
+
+# 以下のルールを参考にして辞書化(一部だけですが)
+# https://www.opencae.or.jp/activity/translation/openfoam_latex/
+
+rules:
+  - pattern: 浮ぶ
+    expected: 浮かぶ
