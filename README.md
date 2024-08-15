@@ -66,9 +66,12 @@ Dokerfileを参考にして,設定してください.
 <!-- textlint-enable prh -->
 | ルール名 | ルール概要 | ルールの配布元 |
 | ---- | ---- | ---- |
+<!--- 将来的には導入予定
 | textlint-rule-ja-hiragana-fukushi | 漢字よりもひらがなで表記したほうが読みやすい副詞を指摘する| [GitHub](https://github.com/lostandfound/textlint-rule-ja-hiragana-fukushi)|
 | textlint-rule-no-doubled-joshi | 1つの文中に同じ助詞が連続して出てくるのをチェックする| [GitHub](github.com/textlint-ja/textlint-rule-no-doubled-joshi)|
+-->
 | preset-ja-spacing |日本語周りにおけるスペースの有無| [GitHub](github.com/textlint-ja/textlint-rule-preset-ja-spacing)|
+| prh |表記ゆれの修正のための辞書ベースのツール| [GitHub](github.com/textlint-ja/textlint-rule-preset-ja-spacing)|
 
 ## Distribution
 生成したスライドPDFは,[Docswell](https://www.docswell.com/user/ichmy55) にて公開しています.
