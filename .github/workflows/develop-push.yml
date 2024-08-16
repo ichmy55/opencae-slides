@@ -23,3 +23,14 @@ jobs:
           name: dist-pdf
           path: dist/**
           retention-days: 5
+  lint:
+    name: Textlint
+    runs-on: ubuntu-24.04
+    container:
+      image : ghcr.io/ichmy55/opencae-slides:main
+      options: --user 1001:118
+    steps:
+      - name: "Checkout  repository"
+        uses: actions/checkout@v4
+      - name: "Textlint & prh"
+        run:  make local-lint

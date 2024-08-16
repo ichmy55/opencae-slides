@@ -1,9 +1,11 @@
-name: On push Actions
+name: Build the package for compiling the latex file.
 
 on:
   push:
     branches:
       - main
+    paths:
+      - Dockerfile
 
 env:
   REGISTRY: ghcr.io
@@ -34,7 +36,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/texcomp/${{ env.IMAGE_NAME }}
  
       - name: "Docker ビルド & プッシュ"
         uses: docker/build-push-action@v5

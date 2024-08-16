@@ -69,6 +69,7 @@ clean:
 	@$(DOCKER) cp README.md opencae-slides:/home/ubuntu/
 	@$(DOCKER) cp .textlintrc.json opencae-slides:/home/ubuntu/
 	@$(DOCKER) cp src opencae-slides:/home/ubuntu/src
+	@$(DOCKER) cp rules opencae-slides:/home/ubuntu/rules
 #
 # コンテナ上のビルド
 # 
