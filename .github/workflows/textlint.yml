@@ -19,7 +19,7 @@ jobs:
       - name: "Checkout  repository"
         uses: actions/checkout@v4
       - name: "Textlint & prh"
-        run:  make local-lint 2>&1 | tee ./.textlint.log
+        run:  make local-lint
       # note: textlintで文章上のミスがあった場合のみ、reviewdogを実行
       - name: Run reviewdog
         if: failure()

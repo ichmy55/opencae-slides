@@ -116,10 +116,10 @@ $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS2)
 	rm -f 000-main.*
 
 localclean:
-	rm -rf  000-main.* work dist; mkdir -p dist work
+	rm -rf  ./.textlint.log 000-main.* work dist; mkdir -p dist work
 
 localup:
 	cp -rL $(SRCDIR)/* work/
 
 local-lint:
-	npx textlint -f pretty-error README.md $(SRCS)
+	npx textlint -f pretty-error README.md $(SRCS)  2>&1 | tee ./.textlint.log
