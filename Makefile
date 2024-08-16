@@ -122,5 +122,5 @@ localup:
 	cp -rL $(SRCDIR)/* work/
 
 local-lint:
-        rm -f ./.textlint.log
+	rm -f ./.textlint.log
 	npx textlint -f pretty-error README.md $(SRCS)  2>&1 | tee ./.textlint.log
