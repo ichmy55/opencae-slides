@@ -28,9 +28,10 @@ $ git clone https://github.com/ichmy55/opencae-slides.git
 上記展開すると以下のようなディレクトリ構成になります.
 <pre>
 .
-├── Dockerfile
-├── Makefile
 ├── README.md
+├── Makefile
+├── Dockerfile................Texコンパイル用のDockerイメージを作る.
+├── Dockerfile2...............Textlintで自動校正用のDockerイメージを作る.
 ├── .github/workflow .........GitHubでのCI/CO設定ファイル.
 ├── .textlintrc.json..........自動校正textlint用ルールファイル.
 ├── rules ....................自動校正prh用辞書ファイル.

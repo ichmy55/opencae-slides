@@ -5,8 +5,10 @@
 # Docker コマンドマクロ
 #
 DOCKER := docker
-DOCKER_IMAGE := ghcr.io/ichmy55/opencae-slides/texcomp:main
-DOCKER_NAME  := opencae-slides
+DOCKER_IMAGE  := ghcr.io/ichmy55/opencae-slides/texcomp:main
+DOCKER_IMAGE2 := ghcr.io/ichmy55/opencae-slides/textlint:main
+DOCKER_NAME   := opencae-slides
+DOCKER_NAME2  := opencae-textlint
 #
 # Latex エンジン
 #
@@ -44,8 +46,11 @@ first: localbuild
 # コンテナを初期設定します
 up:
 	$(DOCKER) pull $(DOCKER_IMAGE)
+	$(DOCKER) pull $(DOCKER_IMAGE2)
 	$(DOCKER) rm -f  $(DOCKER_NAME)
-	$(DOCKER) run -d --name $(DOCKER_NAME) $(DOCKER_IMAGE) sleep infinity
+	$(DOCKER) rm -f  $(DOCKER_NAME2)
+	$(DOCKER) run -d --name $(DOCKER_NAME)  $(DOCKER_IMAGE) sleep infinity
+	$(DOCKER) run -d --name $(DOCKER_NAME2) $(DOCKER_IMAGE2) sleep infinity
 	make clean
 #
 # コンテナを確認します
@@ -55,21 +60,26 @@ ps:
 # コンテナの停止
 stop:
 	@$(DOCKER) stop $(DOCKER_NAME)
+	@$(DOCKER) stop $(DOCKER_NAME2)
 #
 # コンテナを停止し，upで作成したコンテナ，ネットワーク，ボリューム，イメージを削除
 # 
 down:
 	$(DOCKER) rm -f  $(DOCKER_NAME)
+	$(DOCKER) rm -f  $(DOCKER_NAME2)
 #
 # コンテナ上のデータ整理（いったん全部消して、ローカルから持上）
 # 
 clean:
 	@$(DOCKER) exec -it opencae-slides rm -rf *
 	@$(DOCKER) cp Makefile opencae-slides:/home/ubuntu/
-	@$(DOCKER) cp README.md opencae-slides:/home/ubuntu/
-	@$(DOCKER) cp .textlintrc.json opencae-slides:/home/ubuntu/
 	@$(DOCKER) cp src opencae-slides:/home/ubuntu/src
-	@$(DOCKER) cp rules opencae-slides:/home/ubuntu/rules
+	@$(DOCKER) exec -it opencae-textlint rm -rf *
+	@$(DOCKER) cp Makefile opencae-textlint:/home/ubuntu/
+	@$(DOCKER) cp README.md opencae-textlint:/home/ubuntu/
+	@$(DOCKER) cp .textlintrc.json opencae-textlint:/home/ubuntu/
+	@$(DOCKER) cp src opencae-textlint:/home/ubuntu/src
+	@$(DOCKER) cp rules opencae-textlint:/home/ubuntu/rules
 #
 # コンテナ上のビルド
 # 
@@ -82,12 +92,14 @@ build:
 # 
 lint:
 	make clean
-	@$(DOCKER) exec -it opencae-slides make local-lint
+	@$(DOCKER) exec -it opencae-textlint make local-lint
 #
 # コンテナへのログイン
 # 
 bash:
 	@$(DOCKER) exec -it opencae-slides bash
+bash2:
+	@$(DOCKER) exec -it opencae-textlint bash
 #
 # ローカルでのビルド関連ターゲット
 #
