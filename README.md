@@ -28,9 +28,10 @@ $ git clone https://github.com/ichmy55/opencae-slides.git
 上記展開すると以下のようなディレクトリ構成になります.
 <pre>
 .
-├── Dockerfile
-├── Makefile
 ├── README.md
+├── Makefile
+├── Dockerfile................Texコンパイル用のDockerイメージを作る.
+├── Dockerfile2...............Textlintで自動校正用のDockerイメージを作る.
 ├── .github/workflow .........GitHubでのCI/CO設定ファイル.
 ├── .textlintrc.json..........自動校正textlint用ルールファイル.
 ├── rules ....................自動校正prh用辞書ファイル.
@@ -57,7 +58,7 @@ make一発で,docker環境の生成,docker環境へのソース転送,結果pdf�
 引き出すところまで自動でやります．
 結果ファイルが「dist」ディレクトリに格納されますので,取り出してください.
 ローカルでコンパイルする場合は,$ make localbuildでコンパイルします.
-この場合は,ローカルに必要なパッケージを入れる必要があります.
+この場合は,ローカルに必要なパッケージを入れる必要があります.如何に
 Dokerfileを参考にして,設定してください.
 
 ## Textlint

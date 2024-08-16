@@ -1,0 +1,27 @@
+name: textlint
+
+on:
+  push:
+    branches:
+      - development
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: textlint
+    runs-on: ubuntu-24.04
+    container:
+      image : ghcr.io/ichmy55/opencae-slides/textlint:main
+      options: --user 1001:118
+    steps:
+      - name: "Checkout  repository"
+        uses: actions/checkout@v4
+      - name: "Textlint & prh"
+        run:  make local-lint
+      - name: Run reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cat .textlint.log | reviewdog -f=checkstyle -name="textlint" -reporter="github-pr-review"

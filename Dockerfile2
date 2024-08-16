@@ -24,10 +24,18 @@ ARG USERNAME=ubuntu
 ARG GROUPNAME=ubuntu
 USER $USERNAME
 WORKDIR /home/$USERNAME/
+ENV PATH=/home/$USERNAME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 COPY --chown=$USERNAME:$GROUPNAME src /home/$USERNAME/src
 COPY --chown=$USERNAME:$GROUPNAME rules /home/$USERNAME/rules
 COPY --chown=$USERNAME:$GROUPNAME Makefile /home/$USERNAME/
 COPY --chown=$USERNAME:$GROUPNAME README.md /home/$USERNAME/
 COPY --chown=$USERNAME:$GROUPNAME .textlintrc.json /home/$USERNAME/
+#
+# Reviewdog をインストールします
+#
+RUN curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s
+#
+# テストもします.
+#
 RUN  make local-lint
 RUN  rm -r src/* rules Makefile README.md .textlintrc.json

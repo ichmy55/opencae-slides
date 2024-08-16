@@ -6,5 +6,9 @@ version: 1
 # https://www.opencae.or.jp/activity/translation/openfoam_latex/
 
 rules:
+  - pattern: 当る
+    expected: 当たる
   - pattern: 浮ぶ
     expected: 浮かぶ
+  - pattern: 如何に
+    expected: いかに
