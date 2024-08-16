@@ -16,7 +16,7 @@ RUN apt -y install texlive-full
 RUN apt -y install fonts-firacode fonts-noto
 
 #
-# コンパイル環境を作成します
+# コンパイル環境を作成します.
 #
 # コンパイルテストもします。Texは最初のコンパイル時に
 # かなりの時間を要するのを削減するためです
