@@ -5,7 +5,7 @@
 # Docker コマンドマクロ
 #
 DOCKER := docker
-DOCKER_IMAGE := ghcr.io/ichmy55/opencae-slides:main
+DOCKER_IMAGE := ghcr.io/ichmy55/opencae-slides/texcomp:main
 DOCKER_NAME  := opencae-slides
 #
 # Latex エンジン
