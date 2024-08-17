@@ -12,6 +12,9 @@ jobs:
   lint:
     name: textlint
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: write
     container:
       image : ghcr.io/ichmy55/opencae-slides/textlint:main
       options: --user 1001:118
