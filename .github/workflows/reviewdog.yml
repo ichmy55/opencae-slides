@@ -16,10 +16,6 @@ jobs:
     steps:
       - name: "Checkout  repository"
         uses: actions/checkout@v4
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.2.34'
       - uses: reviewdog/action-setup@v1
         with:
           reviewdog_version: latest
