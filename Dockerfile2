@@ -11,7 +11,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 #
 RUN apt update
 RUN apt -y upgrade
-RUN apt -y install make curl
+RUN apt -y install make
 RUN apt -y install nodejs npm
 RUN npm install -g textlint textlint-plugin-latex2e textlint-rule-preset-japanese textlint-rule-preset-ja-spacing textlint-filter-rule-comments textlint-rule-prh
 
@@ -30,10 +30,6 @@ COPY --chown=$USERNAME:$GROUPNAME rules /home/$USERNAME/rules
 COPY --chown=$USERNAME:$GROUPNAME Makefile /home/$USERNAME/
 COPY --chown=$USERNAME:$GROUPNAME README.md /home/$USERNAME/
 COPY --chown=$USERNAME:$GROUPNAME .textlintrc.json /home/$USERNAME/
-#
-# Reviewdog をインストールします
-#
-RUN curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s
 #
 # テストもします.
 #
