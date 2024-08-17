@@ -1,11 +1,7 @@
 name: Build the package for compiling the latex file.
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - Dockerfile
+  workflow_call:
 
 env:
   REGISTRY: ghcr.io
