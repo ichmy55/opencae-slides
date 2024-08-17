@@ -1,0 +1,10 @@
+name: On push Actions
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  call-workflow:
+    uses: ./.github/workflows/build-pdf.yml
