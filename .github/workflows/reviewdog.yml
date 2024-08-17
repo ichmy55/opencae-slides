@@ -10,17 +10,18 @@ jobs:
       checks: write
       contents: read
       pull-requests: write
-    container:
-      image : ghcr.io/ichmy55/opencae-slides/textlint:main
-      options: --user 1001:118
     steps:
       - name: "Checkout  repository"
         uses: actions/checkout@v4
       - uses: reviewdog/action-setup@v1
         with:
           reviewdog_version: latest
+      - name: inst
+        run:  |
+          apt -y install nodejs npm
+          npm install -g textlint textlint-plugin-latex2e textlint-rule-preset-japanese textlint-rule-preset-ja-spacing textlint-filter-rule-comments textlint-rule-prh
       - name: "Textlint & prh"
-        run:  make local-lint
+        run:  npx textlint README.md  > ./.textlint.log
       - name: run  reviewdog
         if: failure()
         env:
