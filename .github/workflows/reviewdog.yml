@@ -13,13 +13,17 @@ jobs:
     steps:
       - name: "Checkout  repository"
         uses: actions/checkout@v4
+      - name: Setup node/npm
+        uses: actions/setup-node@v1
+        with:
+          node-version: '15'
       - uses: reviewdog/action-setup@v1
         with:
           reviewdog_version: latest
       - name: inst
         run:  |
-          apt -y install nodejs npm
-          npm install -g textlint textlint-plugin-latex2e textlint-rule-preset-japanese textlint-rule-preset-ja-spacing textlint-filter-rule-comments textlint-rule-prh
+          npm install
+          npm install textlint textlint-plugin-latex2e textlint-rule-preset-japanese textlint-rule-preset-ja-spacing textlint-filter-rule-comments textlint-rule-prh
       - name: "Textlint & prh"
         run:  npx textlint README.md  > ./.textlint.log
       - name: run  reviewdog
