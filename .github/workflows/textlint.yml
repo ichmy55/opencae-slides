@@ -1,12 +1,8 @@
 name: textlint
 
 on:
-  push:
-    branches:
-      - development
-  pull_request:
-    branches:
-      - main
+  on:
+  workflow_call:
 
 jobs:
   lint:

@@ -6,5 +6,7 @@ on:
       - development
 
 jobs:
-  call-workflow:
+  lint:
+    uses: ./.github/workflows/textlint.yml
+  build-pdf:
     uses: ./.github/workflows/build-pdf.yml
