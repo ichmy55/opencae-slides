@@ -12,6 +12,10 @@ jobs:
   lint:
     name: textlint
     runs-on: ubuntu-24.04
+    permissions:
+      checks: write
+      contents: read
+      pull-requests: write
     container:
       image : ghcr.io/ichmy55/opencae-slides/textlint:main
       options: --user 1001:118
@@ -20,8 +24,3 @@ jobs:
         uses: actions/checkout@v4
       - name: "Textlint & prh"
         run:  make local-lint
-      - name: Run reviewdog
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cat .textlint.log | reviewdog -f=checkstyle -name="textlint" -reporter="github-pr-review"

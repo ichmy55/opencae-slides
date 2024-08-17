@@ -12,3 +12,13 @@ rules:
     expected: 浮かぶ
   - pattern: 如何に
     expected: いかに
+  - pattern: 何時
+    expected: いつ
+  - pattern: 美味しい
+    expected: おいしい
+  - pattern: 鍛冶
+    expected: かじ
+  - pattern: 瓦斯
+    expected: ガス
+  - pattern: 硝子
+    expected: ガラス
