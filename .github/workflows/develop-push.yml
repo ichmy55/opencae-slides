@@ -7,6 +7,10 @@ on:
 
 jobs:
   lint:
+    permissions:
+      checks: write
+      contents: read
+      pull-requests: write
     uses: ./.github/workflows/textlint.yml
   build-pdf:
     uses: ./.github/workflows/build-pdf.yml
