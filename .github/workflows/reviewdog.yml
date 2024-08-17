@@ -22,6 +22,7 @@ jobs:
       - name: "Textlint & prh"
         run:  make local-lint
       - name: run  reviewdog
+        if: failure()
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: cat .textlint.log | reviewdog -reporter=github-pr-review -f=phpstan
