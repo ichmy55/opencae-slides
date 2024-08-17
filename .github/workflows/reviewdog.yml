@@ -1,33 +1,31 @@
 name: reviewdog
+
 on: [pull_request]
+
 jobs:
-  textlint:
-    name: runner / textlint
-    runs-on: ubuntu-latest
+  lint:
+    name: textlint
+    runs-on: ubuntu-24.04
+    permissions:
+      checks: write
+      contents: read
+      pull-requests: write
+    container:
+      image : ghcr.io/ichmy55/opencae-slides/textlint:main
+      options: --user 1001:118
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: "Checkout  repository"
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          submodules: true
-      - name: Setup node/npm
-        uses: actions/setup-node@v1
+          php-version: '7.2.34'
+      - uses: reviewdog/action-setup@v1
         with:
-          node-version: '15'
-      - name: textlint-github-pr-check
-        uses: tsuyoshicho/action-textlint@v3
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-check
-          textlint_flags: "README.**"
-      - name: textlint-github-check
-        uses: tsuyoshicho/action-textlint@v3
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-check
-          textlint_flags: "README.**"
-      - name: textlint-github-pr-review
-        uses: tsuyoshicho/action-textlint@v3
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          textlint_flags: "README.**"
+          reviewdog_version: latest
+      - name: "Textlint & prh"
+        run:  make local-lint
+      - name: run  reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cat .textlint.log | reviewdog -reporter=github-pr-review -f=phpstan
