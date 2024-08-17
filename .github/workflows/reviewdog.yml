@@ -13,23 +13,10 @@ jobs:
     steps:
       - name: "Checkout  repository"
         uses: actions/checkout@v4
-      - name: Setup node/npm
-        uses: actions/setup-node@v1
+      - name: textlint-github-pr-review
+        uses: tsuyoshicho/action-textlint@v3
         with:
-          node-version: '15'
-      - uses: reviewdog/action-setup@v1
-        with:
-          reviewdog_version: latest
-      - name: inst
-        run:  |
-          npm install
-          npm install textlint textlint-plugin-latex2e textlint-rule-preset-japanese textlint-rule-preset-ja-spacing textlint-filter-rule-comments textlint-rule-prh
-      - name: "Textlint & prh"
-        run:  npx textlint README.md  > ./.textlint.log
-      - name: run  reviewdog
-        if: failure()
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cat .textlint.log 
-          cat .textlint.log | reviewdog -reporter=github-pr-review -efm='%f:%l:%c:%m'
+          github_token: ${{ secrets.GA_REVEIWDOG_TOKEN }}
+          reporter: github-pr-review
+          level: warning
+          textlint_flags: "README.**"
