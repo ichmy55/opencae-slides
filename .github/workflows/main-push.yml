@@ -6,20 +6,5 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build the beamer PDF  image
-    runs-on: ubuntu-24.04
-    container:
-      image : ghcr.io/ichmy55/opencae-slides/texcomp:main
-      options: --user 1001:118
-    steps:
-      - name: "Checkout  repository"
-        uses: actions/checkout@v4
-      - name: "build PDF"
-        run:  make localbuild
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist-pdf
-          path: dist/**
-          retention-days: 5
+  build-pdf:
+    uses: ./.github/workflows/build-pdf.yml
