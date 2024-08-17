@@ -123,5 +123,5 @@ localup:
 
 local-lint:
 	rm -f ./.textlint.log
-	npx textlint -f pretty-error README.md $(SRCS)
 	npx textlint README.md $(SRCS)  > ./.textlint.log
+	npx textlint -f pretty-error README.md $(SRCS)
