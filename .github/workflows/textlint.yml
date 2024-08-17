@@ -1,7 +1,6 @@
 name: textlint
 
 on:
-  on:
   workflow_call:
 
 jobs:
