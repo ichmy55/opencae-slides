@@ -1,4 +1,4 @@
-name: On push Actions
+name: Build the PDF at push to development
 
 on:
   push:

@@ -1,5 +1,5 @@
 #
-# Tex をコンパイルする環境をDocker上に作成する
+# Tex をコンパイルする環境をDocker上に作成する.
 #
 FROM ubuntu:24.04
 
@@ -7,7 +7,7 @@ ENV TZ=Asia/Tokyo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 #
-# 必要なパッケージをインストールします
+# 必要なパッケージをインストールします.
 #
 RUN apt update
 RUN apt -y upgrade
@@ -18,8 +18,8 @@ RUN apt -y install fonts-firacode fonts-noto
 #
 # コンパイル環境を作成します.
 #
-# コンパイルテストもします。Texは最初のコンパイル時に
-# かなりの時間を要するのを削減するためです
+# コンパイルテストもします.Texは最初のコンパイル時に
+# かなりの時間を要するのを削減するためです.
 #
 ARG USERNAME=ubuntu
 ARG GROUPNAME=ubuntu
