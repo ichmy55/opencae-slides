@@ -1,4 +1,4 @@
-name: On push Actions
+name: Build the PDF at push to development
 
 on:
   push:
@@ -6,11 +6,5 @@ on:
       - development
 
 jobs:
-  lint:
-    permissions:
-      checks: write
-      contents: read
-      pull-requests: write
-    uses: ./.github/workflows/textlint.yml
   build-pdf:
     uses: ./.github/workflows/build-pdf.yml
