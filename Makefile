@@ -116,7 +116,7 @@ $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS2)
 	rm -f 000-main.*
 
 localclean:
-	rm -rf  ./.textlint.log 000-main.* work dist; mkdir -p dist work
+	rm -rf  000-main.* work dist; mkdir -p dist work
 
 localup:
 	cp -rL $(SRCDIR)/* work/

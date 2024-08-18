@@ -28,18 +28,23 @@ $ git clone https://github.com/ichmy55/opencae-slides.git
 上記展開すると以下のようなディレクトリ構成になります.
 <pre>
 .
-├── README.md
-├── Makefile
-├── Dockerfile................Texコンパイル用のDockerイメージを作る.
-├── Dockerfile2...............Textlintで自動校正用のDockerイメージを作る.
-├── .github/workflow .........GitHubでのCI/CO設定ファイル.
+├── README.md.................説明書
+├── Makefile..................Texコンパイル方法を記載したレシピファイル.
+├── Dockerfile................Texコンパイル用のDockerイメージのレシピ.
+├── Dockerfile2...............Textlintで自動校正用のDockerイメージのレシピ.
+├── .github
+│   ├── script................reviewdog用スクリプト
+│   └── workflow..............GitHubでのCI/CO設定ファイル.
 ├── .textlintrc.json..........自動校正textlint用ルールファイル.
 ├── rules ....................自動校正prh用辞書ファイル.
+├── package-lock.json ........reviewdog 実行用ダミー(無視/放置ください).
+│    
 ├── src ......................このディレクトリにTexのソースファイルを配置します.
-│   └── opencae-kantou-s-025..ソースは勉強会毎のディレクトリにそれぞれ入れます.
-│   └── opencae-kantou-s-027..ソースは勉強会毎のディレクトリにそれぞれ入れます.
+│   ├── opencae-kantou-s-025..ソースは勉強会毎のディレクトリにそれぞれ入れます.
+│   └── opencae-kantou-s-027..ソースは勉強会毎のディレクトリにそれぞれ入れます.
 │         ├── geometry........使用する形状ファイルを入れます.
 │         └── images..........勉強会毎のディレクトリにTexから読み込む画像ファイルを入れます.
+│    
 ├── dist......................このディレクトリに結果pdfが生成されます.Make時に生成されます.
 └── work......................ワーク用です.Make時に生成されます.
 </pre>
@@ -69,6 +74,12 @@ Dokerfileを参考にして,設定してください.
 | ---- | ---- | ---- |
 | preset-ja-spacing |日本語周りにおけるスペースの有無| [GitHub](https://github.com/textlint-ja/textlint-rule-preset-ja-spacing)|
 | textlint-rule-prh |表記ゆれの修正のための辞書ベースのツール| [GitHub](https://github.com/textlint-rule/textlint-rule-prh)|
+
+また,自動校正に以下の辞書を用いています.
+| 辞書名 | 辞書概要 | 参照先 |
+| ---- | ---- | ---- |
+| WEB+DB_PRESS |prhに同梱された標準辞書| [GitHub](https://github.com/prh/prh)|
+| Opencae-sosj |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
 
 ## Distribution
 生成したスライドPDFは,[Docswell](https://www.docswell.com/user/ichmy55) にて公開しています.
