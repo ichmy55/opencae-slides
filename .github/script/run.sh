@@ -2,7 +2,7 @@
 
 set -eux
 
-npx textlint "./src/**/*.tex:README.md" --format json | python .github/script/convert.py >./report.json
+npx textlint --format json "./src/**/*.tex ./README.md" | python .github/script/convert.py >./report.json
 
 if [ -s ./report.json ]; then
     cat ./report.json | reviewdog -f=rdjson -reporter=github-pr-review
