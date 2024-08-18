@@ -1,4 +1,4 @@
-name: On push Actions
+name: Build the beamer PDF image
 
 on:
   workflow_call:
