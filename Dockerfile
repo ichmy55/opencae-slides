@@ -18,7 +18,7 @@ RUN apt -y install fonts-firacode fonts-noto
 #
 # コンパイル環境を作成します.
 #
-# コンパイルテストもします.Texは最初のコンパイル時に
+# コンパイルテストもします.Texは最初のコンパイル時に,
 # かなりの時間を要するのを削減するためです.
 #
 ARG USERNAME=ubuntu
