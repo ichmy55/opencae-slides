@@ -3,40 +3,40 @@ tag-template: '$RESOLVED_VERSION'
 categories:
   - title: :rocket: Features
     labels:
-      - Feature
+      - 'Feature'
   - title: :+1: Adding Pages
     labels:
-      - Page
+      - 'Page'
   - title: :memo: Wording correction
     labels:
-      - Correction
+      - 'Correction'
   - title: :bug: Bug Fixes
     labels:
       - 'Bug'
   - title: :fire: Remove
     labels:
-      - Remove
+      - 'Remove'
   - title: :recycle: Refactoring
     labels:
-      - Refactoring
+      - 'Refactoring'
   - title: :white_check_mark: Testing
     labels:
-      - Testing
+      - 'Testing'
   - title: :green_heart: CI/CD
     labels:
-      - CI/CD
+      - 'CI/CD'
  - title: :up: Dependencies
     labels:
-      - Dependencies
+      - 'Dependencies'
   - title: :cop: Security
     labels:
-      - Security
+      - 'Security'
   - title: :gear: Development
     labels:
-      - Development
+      - 'Development'
   - title: :books: Documentation
     labels:
-      - Documentation
+      - 'Documentation'
   - title: Other Changes
     labels:
       - "*"
@@ -53,4 +53,5 @@ version-resolver:
   default: patch
 template: |
   ## What’s Changed
+
   $CHANGES
