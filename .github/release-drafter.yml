@@ -1,4 +1,4 @@
-name-template: '🍏 $RESOLVED_VERSION'
+name-template: ':green_apple: $RESOLVED_VERSION'
 tag-template: '$RESOLVED_VERSION'
 categories:
   - title: :rocket: Features
