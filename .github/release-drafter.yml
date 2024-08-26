@@ -1,24 +1,45 @@
+name-template: '$RESOLVED_VERSION :green_apple:'
+tag-template: '$RESOLVED_VERSION'
 categories:
-  - title: "Feature"
+  - title: ":rocket: Features"
     labels:
-      - feature
-  - title: "Bug Fixes"
+      - 'Feature'
+  - title: ":+1: Adding Pages"
+    labels:
+      - 'Page'
+  - title: ":memo: Wording correction"
+    labels:
+      - 'Correction'
+  - title: ":bug: Bug Fixes"
     labels:
       - bug
-  - title: "Docs"
+  - title: ":fire: Remove"
+    labels:
+      - 'Remove
+  - title: ":recycle: Refactoring"
+    labels:
+      - 'Refactoring'
+  - title: ":white_check_mark: Testing"
+    labels:
+      - 'Testing'
+  - title: ":green_heart: CI/CD"
+    labels:
+      - 'CI/CD'
+  - title: ":up: Dependencies"
+    labels:
+      - 'Dependencies'
+  - title: ":cop: Security"
+    labels:
+      - 'Security'
+  - title: ":gear: Development"
+    labels:
+      - 'Development'
+  - title: ":book: Documentation"
     labels:
       - documentation
-autolabeler:
-  - label: "feature"
-    branch:
-      - "/^feat/i"
-      - "/^feature/i"
-  - label: "bug"
-    branch:
-      - "/^fix/"
-  - label: "documentation"
-    branch:
-      - "/^docs/"
+  - title: Other Changes
+    labels:
+      - "*"
 version-resolver:
   major:
     labels:
