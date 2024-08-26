@@ -25,7 +25,7 @@ categories:
   - title: 'CI/CD :green_heart:'
     labels:
       - 'CI/CD'
- - title: 'Dependencies :up:'
+  - title: 'Dependencies :up:'
     labels:
       - 'Dependencies'
   - title: 'Security :cop:'
