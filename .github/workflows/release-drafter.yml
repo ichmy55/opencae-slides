@@ -1,22 +1,57 @@
-name: Release Drafter
+name-template: ':green_apple: $RESOLVED_VERSION'
+tag-template: '$RESOLVED_VERSION'
+categories:
+  - title: :rocket: Features
+    labels:
+      - 'Feature'
+  - title: :+1: Adding Pages
+    labels:
+      - 'Page'
+  - title: :memo: Wording correction
+    labels:
+      - 'Correction'
+  - title: :bug: Bug Fixes
+    labels:
+      - 'Bug'
+  - title: :fire: Remove
+    labels:
+      - 'Remove'
+  - title: :recycle: Refactoring
+    labels:
+      - 'Refactoring'
+  - title: :white_check_mark: Testing
+    labels:
+      - 'Testing'
+  - title: :green_heart: CI/CD
+    labels:
+      - 'CI/CD'
+ - title: :up: Dependencies
+    labels:
+      - 'Dependencies'
+  - title: :cop: Security
+    labels:
+      - 'Security'
+  - title: :gear: Development
+    labels:
+      - 'Development'
+  - title: :books: Documentation
+    labels:
+      - 'Documentation'
+  - title: Other Changes
+    labels:
+      - "*"
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
+template: |
+  ## What’s Changed
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, reopened, synchronize]
-
-permissions:
-  contents: read
-
-jobs:
-  update_release_draft:
-    permissions:
-      contents: write
-      pull-requests: write
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: release-drafter/release-drafter@v6
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  $CHANGES
