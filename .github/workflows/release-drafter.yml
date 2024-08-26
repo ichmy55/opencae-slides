@@ -1,40 +1,40 @@
-name-template: ':green_apple: $RESOLVED_VERSION'
+name-template: '$RESOLVED_VERSION :green_apple:'
 tag-template: '$RESOLVED_VERSION'
 categories:
-  - title: :rocket: Features
+  - title: 'Features :rocket:'
     labels:
       - 'Feature'
-  - title: :+1: Adding Pages
+  - title: 'Adding Pages :+1:'
     labels:
       - 'Page'
-  - title: :memo: Wording correction
+  - title: 'Wording correction :memo:'
     labels:
       - 'Correction'
-  - title: :bug: Bug Fixes
+  - title: 'Bug Fixes :bug:'
     labels:
       - 'Bug'
-  - title: :fire: Remove
+  - title: 'Remove :fire:'
     labels:
       - 'Remove'
-  - title: :recycle: Refactoring
+  - title: 'Refactoring :recycle:'
     labels:
       - 'Refactoring'
-  - title: :white_check_mark: Testing
+  - title: 'Testing :white_check_mark:'
     labels:
       - 'Testing'
-  - title: :green_heart: CI/CD
+  - title: 'CI/CD :green_heart:'
     labels:
       - 'CI/CD'
- - title: :up: Dependencies
+ - title: 'Dependencies :up:'
     labels:
       - 'Dependencies'
-  - title: :cop: Security
+  - title: 'Security :cop:'
     labels:
       - 'Security'
-  - title: :gear: Development
+  - title: 'Development :gear:'
     labels:
       - 'Development'
-  - title: :books: Documentation
+  - title: 'Documentation :books:'
     labels:
       - 'Documentation'
   - title: Other Changes
