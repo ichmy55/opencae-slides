@@ -15,7 +15,7 @@ categories:
       - bug
   - title: ":fire: Remove"
     labels:
-      - 'Remove
+      - 'Remove'
   - title: ":recycle: Refactoring"
     labels:
       - 'Refactoring'
