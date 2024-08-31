@@ -5,5 +5,7 @@ imports:
     ignoreRules:
       - expected: 始め
       - expected: 進$1 
+      - expected: Web
+      - expected: まさに
   - path: ./Opencae-socj.yml
     disableImports: true
