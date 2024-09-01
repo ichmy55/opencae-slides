@@ -1,16 +1,19 @@
-\begin{frame}[noframenumbering]{付録B． ～ソースのありか～}
-  \begin{table}[hbtp]
-    \begin{tabular}{rll} % 表は項目名を右寄せ、データを左寄せ
-      項目                & 置き場 & URL \\
-        スライド.tex  & \multirow{3}{*}{Github} &  \multirow{3}{*}{\urlstyle{same} \color{cud_orange}
-                                   \href{https://github.com/ichmy55/opencae-slides}
-                                        {github.com/ichmy55/opencae-slides}} \\
-        形状.geo  & & \\
-        形状.step & & \\
-        図面      &  Onshape & 予定地 \\
-        スライド.pdf  & Docswell & {\urlstyle{same} \color{cud_orange}
-                                   \href{https://www.docswell.com/user/ichmy55}
-                                   {www.docswell.com/user/ichmy55}} \\
-    \end{tabular}
+\begin{frame}[noframenumbering]{付録B． ～配布するデータファイル～}
+  今回使用したファイルについては以下github
+     （{\urlstyle{same} \color{cud_orange}
+      \href{https://github.com/ichmy55/opencae-slides/releases/tag/v.0.1.2/handout.zip}
+      {github.com/ichmy55/opencae-slides/releases/tag/v.0.1.2/handout.zip}}）にて配布します
+   \begin{table}[hbtp]
+    \caption{配布zipの中身}
+    \vspace{-5mm}
+   {\small
+      \begin{tabular}{|c||l|l|l|} \hline % 表は項目名を中央寄せ、データを左寄せ
+        ディレクトリ & ファイル種類 & ファイル名 & 概要 \\ \hhline{|=:=|=|=|}
+	\multirow{2}{*}{01-gmesh-script} & gmsh入力  & failure-example.geo & メッシュ切失敗形状  \\ \cline{3-4}
+					 & スクリプト& failure-example.geo & メッシュ切成功形状  \\ \hline
+	      \multirow{2}{*}{02-openCASCADE-brep} & gmsh出力  & failure-example.brep & メッシュ切失敗形状  \\ \cline{3-4}
+                                         & B-rep形式& failure-example.brep & メッシュ切成功形状  \\ \hline
+      \end{tabular}
+    }
   \end{table}
 \end{frame}

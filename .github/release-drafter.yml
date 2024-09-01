@@ -1,5 +1,5 @@
-name-template: '$RESOLVED_VERSION :green_apple:'
-tag-template: '$RESOLVED_VERSION'
+name-template: 'v.$RESOLVED_VERSION :green_apple:'
+tag-template: 'v.$RESOLVED_VERSION'
 categories:
   - title: ":rocket: Features"
     labels:
