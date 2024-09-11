@@ -122,3 +122,8 @@ v16 = newv;  BooleanDifference(v16) = {Volume{v15}; Delete;}{Volume{v12};};
 //
 v17 = newv;  BooleanIntersection(v17) = {Volume{v6};Delete;}{Volume{v11};Delete;};
 v18 = newv;  BooleanIntersection(v18) = {Volume{v17};Delete;}{Volume{v12};Delete;};
+//
+// すべてのソリッドを地続きに指定
+//
+HealShapes;
+Coherence;
