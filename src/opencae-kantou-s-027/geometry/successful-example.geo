@@ -121,7 +121,10 @@ v16 = newv;  BooleanDifference(v16) = {Volume{v15}; Delete;}{Volume{v12};Delete;
 // 異常をきたしている球殻（上部）を球殻（左下部）から回転コピー
 //
 v17 = Rotate{{1,1,-1},{0,0,0},Pi/3*2}{ Duplicata{ Volume{v14}; }};
-Coherence;
+//
+// すべてのソリッドを地続きに指定
+//
 HealShapes;
+Coherence;
 //
 
