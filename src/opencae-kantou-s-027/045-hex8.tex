@@ -1,4 +1,4 @@
-\begin{frame}{６面体要素が切れる形状}
+\begin{frame}{あらためてメッシュ要素について復習}
   \begin{table}[hbtp]
       \caption{３次元構造解析で使われる主なメッシュ要素(一部)＜参考文献\cite{handbook}＞}
       \vspace{-5mm}
@@ -19,10 +19,14 @@
     \end{tabular}
   \end{table}
   %
-  % TiKZを使った図形の描画 図２でA点を指し示す矢印
-  \begin{textblock*}{30pt}(385pt,105pt)
-    \begin{tikzpicture}
-        \node[rectangle,fill=cud_yellow,text width=0.5cm,text centered,rounded corners,minimum height=0.5cm](s) at (1cm,1cm) { \scriptsize 使用禁止};
-    \end{tikzpicture}
-  \end{textblock*}
+  ※ 他に５面体１次要素（６面体１次要素の面が一つ縮退したもの）もある
+  %
+  \only<2>{
+    % TiKZを使った図形の描画 図２でA点を指し示す矢印
+    \begin{textblock*}{30pt}(385pt,105pt)
+      \begin{tikzpicture}
+         \node[rectangle,fill=cud_yellow,text width=0.5cm,text centered,rounded corners,minimum height=0.5cm](s) at (1cm,1cm) { \scriptsize 使用禁止};
+      \end{tikzpicture}
+    \end{textblock*}
+  }
 \end{frame}
