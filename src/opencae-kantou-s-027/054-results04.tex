@@ -1,23 +1,33 @@
-\begin{frame}{結果２}
+\begin{frame}{半径方向応力／周方向応力の分布}
  
-　長手方向応力については、内面と外面に分布が生じたが、ほぼ一致
+  半径方向応力については、(最外面、最内面についてはわずかに外れたが) \\
+  他は非常によく一致
+
+  周方向応力については、全体的にやや多めに表示されたが、ほぼ一致　
 % 図の挿入
 \begin{figure}[htbp]
 \centering
   \begin{minipage}{0.49\columnwidth}
      \centering
-     \includegraphics[width=\columnwidth]{work/images/results03.png}
-     \caption{長手方向応力
+     \includegraphics[width=\columnwidth]{work/images/results01.png}
+     \caption{半径方向応力
        \begin{math}
-         σ_{zz}
+         σ_{rr}
        \end{math}
      }
+     \label{fig:hidari}
   \end{minipage}
 %
   \begin{minipage}{0.49\columnwidth}
+     \centering
+     \includegraphics[width=\columnwidth]{work/images/results02.png}
+     \caption{周方向応力
+       \begin{math}
+         σ_{\theta\theta}
+       \end{math}
+     }
+     \label{fig:migi}
   \end{minipage}
 \end{figure}
-
-　全体として、理論式と、ほぼ一致していると言える
 
 \end{frame}

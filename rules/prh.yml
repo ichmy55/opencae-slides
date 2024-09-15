@@ -4,6 +4,7 @@ imports:
     disableImports: true
     ignoreRules:
       - expected: 始め
+      - expected: あらためて
       - expected: 進$1 
       - expected: Web
       - expected: まさに

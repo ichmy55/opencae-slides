@@ -805,7 +805,7 @@ rules:
     expected: わか$1
   - pattern: /解([らりるれろっ])/
     expected: わか$1
-  - pattern: /の分([^散割類解野離析岐])/
+  - pattern: /の分([^散割類解野離析岐布])/
     expected: のぶん$1
   - pattern:
       - 気をつか
