@@ -1,22 +1,38 @@
 \begin{frame}{接点応力データの取り出し}
- 
-  calculixでは、接点応力データは*.frd ファイルに、接点の選択情報は *.dat \\
-  に出力される
-
-% 図の挿入
-\begin{figure}[htbp]
-\centering
-  \begin{minipage}{0.49\columnwidth}
-     \centering
-     \includegraphics[width=\columnwidth]{work/images/results03.png}
-     \caption{長手方向応力
-       \begin{math}
-         σ_{zz}
-       \end{math}
-     }
-  \end{minipage}
-%
-  \begin{minipage}{0.49\columnwidth}
-  \end{minipage}
-\end{figure}
+  \begin{textblock*}{0.95\linewidth}(0pt,5pt)
+  \begin{figure}[htbp]
+    \begin{center}
+      % TiKZを使った図形の描画
+      \begin{tikzpicture}
+	      \node [above right,minimum height=50pt, minimum width=420pt,align=left] at (0pt,20pt) {calculixでは、接点応力データは*.frd ファイルに、接点の選択情報は *.dat \\
+	  に出力されるが、これらのファイルは単なるアスキーの数字の羅列なので、\\
+	  メモ帳で必要な行だけ取り出し、表計算ソフトで処理する};
+         \node [draw=blue,below right,minimum height=100pt,minimum width=80pt, align=center,fill=cud_lightpink] at (20pt,20pt){全接点情報 \\ *.frd};
+         \node [draw=blue,below right,minimum height=40pt,minimum width=80pt,align=center,fill=cud_lightpink] at (20pt,-85pt){指定接点情報 \\ *.dat};
+         \node [draw=blue,below right,minimum height=20pt,minimum width=100pt,align=center,fill=cud_lightgray] at (150pt,20pt){接点座標.txt};
+         \node [draw=blue,below right,minimum height=20pt,minimum width=100pt,align=center,fill=cud_lightgray] at (150pt,-5pt){要素構成接点.txt};
+         \node [draw=blue,below right,minimum height=20pt,minimum width=100pt,align=center,fill=cud_lightgray] at (150pt,-30pt){接点変位.txt};
+         \node [draw=blue,below right,minimum height=20pt,minimum width=100pt,align=center,fill=cud_lightgray] at (150pt,-55pt){接点応力.txt};
+         \node [draw=blue,below right,minimum height=20pt,minimum width=100pt,align=center,fill=cud_lightgray] at (150pt,-95pt){対象接点.txt};
+         \draw[very thick,->] (100pt,10pt)--(150pt,10pt);
+         \draw[very thick,->] (100pt,-15pt)--(150pt,-15pt);
+         \draw[very thick,->] (100pt,-40pt)--(150pt,-40pt);
+         \draw[very thick,->] (100pt,-65pt)--(150pt,-65pt);
+         \draw[very thick,->] (100pt,-105pt)--(150pt,-105pt);
+         \node [below right,minimum height=20pt,minimum width=100pt,align=center,font=\small] at (75pt,10pt){メモ帳};
+         \node [draw=blue,below right,minimum height=140pt,minimum width=30pt, align=center] at (300pt,20pt){表\\計\\算\\ソ\\フ\\ト};
+         \draw[very thick,->] (250pt,10pt)--(300pt,10pt);
+         \draw[very thick,->] (250pt,-15pt)--(300pt,-15pt);
+         \draw[very thick,->] (250pt,-40pt)--(300pt,-40pt);
+         \draw[very thick,->] (250pt,-65pt)--(300pt,-65pt);
+         \draw[very thick,->] (250pt,-105pt)--(300pt,-105pt);
+         \node [below right,minimum height=20pt,minimum width=100pt,align=center,font=\scriptsize] at (225pt,10pt){テキスト\\読込};
+         \node [draw=blue,below right,minimum height=140pt,minimum width=30pt, align=center,fill=cud_yellow] at (380pt,20pt){グ\\ラ\\フ\\化};
+         \draw[very thick,->] (330pt,-40pt)--(380pt,-40pt);
+         \node [below right,minimum height=20pt,minimum width=100pt,align=center,font=\small] at (300pt,-5pt){座標\\変換};
+      \end{tikzpicture}
+      \caption{接点応力データの取り出し}
+    \end{center}
+  \end{figure}
+	  \end{textblock*}
 \end{frame}
