@@ -21,6 +21,8 @@ rules:
     expected: 打ち合わせ
   - pattern: 打合せ
     expected: 打ち合わせ
+  - pattern: 移り変り
+    expected: 移り変わり
   # 以下の漢字は当て字であり，多くの人の目にふれる文書にはふさわしくないので使用しない．
   - pattern: 如何に
     expected: いかに
