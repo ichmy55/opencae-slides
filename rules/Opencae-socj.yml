@@ -13,8 +13,16 @@ rules:
     expected: 表わす
   - pattern: 著す
     expected: 著わす
+  - pattern: 現われる
+    expected: 現れる
   - pattern: 浮ぶ
     expected: 浮かぶ
+  - pattern: 打ち合せ
+    expected: 打ち合わせ
+  - pattern: 打合せ
+    expected: 打ち合わせ
+  - pattern: 移り変り
+    expected: 移り変わり
   # 以下の漢字は当て字であり，多くの人の目にふれる文書にはふさわしくないので使用しない．
   - pattern: 如何に
     expected: いかに
