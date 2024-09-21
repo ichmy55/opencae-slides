@@ -41,7 +41,7 @@ $ git clone https://github.com/ichmy55/opencae-slides.git
 │    
 ├── src ......................このディレクトリにTexのソースファイルを配置します.
 │   ├── opencae-kantou-s-025..ソースは勉強会毎のディレクトリにそれぞれ入れます.
-│   └── opencae-kantou-s-027..ソースは勉強会毎のディレクトリにそれぞれ入れます.
+│   └── opencae-kantou-s-028..ソースは勉強会毎のディレクトリにそれぞれ入れます.
 │         ├── geometry........使用する形状ファイルを入れます.
 │         └── images..........勉強会毎のディレクトリにTexから読み込む画像ファイルを入れます.
 │    
@@ -55,7 +55,7 @@ Makefile中の変数「DEST_PDF」の値を,PDF作成したい勉強会のディ
 #
 # 作成するスライド名
 #
-DEST_PDF := opencae-kantou-s-027
+DEST_PDF := opencae-kantou-s-028
 ```
 
 ## Usage
