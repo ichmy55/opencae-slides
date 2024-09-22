@@ -64,7 +64,7 @@ make一発で,docker環境の生成,docker環境へのソース転送,結果pdf�
 結果ファイルが「dist」ディレクトリに格納されますので,取り出してください.
 ローカルでコンパイルする場合は,$ make localbuildでコンパイルします.
 この場合は,ローカルに必要なパッケージを入れる必要があります.
-Dokerfileを参考にして,設定ください.
+Dokerfileを参考にして,設定してください.
 
 ## Textlint
 <!-- textlint-disable prh -->
