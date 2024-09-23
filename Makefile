@@ -121,7 +121,7 @@ localclean:
 
 localup:
 	cp -rL $(SRCDIR)/* work/
-	 git describe --tags `git rev-list --tags --max-count=1` > work/version.txt
+	cp VERSION.txt  work/
 
 local-lint:
 	npx textlint -f pretty-error README.md $(SRCS) $(DOCS)

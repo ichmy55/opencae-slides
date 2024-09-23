@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: "Checkout  repository"
         uses: actions/checkout@v4
+      - name: "Overwrite the VERSION.txt"
+        run:  echo "${{ env.BUILD_IDENTIFIER }}" > VERSION.txt
       - name: "build PDF"
         run:  make localbuild
       - name: 'Upload Artifact'
