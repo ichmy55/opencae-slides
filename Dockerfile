@@ -11,7 +11,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 #
 RUN apt update
 RUN apt -y upgrade
-RUN apt -y install sudo make fontconfig
+RUN apt -y install sudo make fontconfig git
 RUN apt -y install texlive-full
 RUN apt -y install fonts-firacode fonts-noto
 
