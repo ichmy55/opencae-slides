@@ -1,5 +1,5 @@
-name-template: v$NEXT_PATCH_VERSION
-tag-template: v$NEXT_PATCH_VERSION
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
 categories:
   - title: ":rocket: Features"
     labels:
@@ -43,10 +43,13 @@ categories:
 version-resolver:
   major:
     labels:
-      - "major"
+      - 'major'
   minor:
     labels:
-      - "feature"
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
   default: "patch"
 
 template: |

@@ -23,6 +23,7 @@ DEST_PDF := opencae-kantou-s-028
 SRCDIR := src/$(DEST_PDF)
 SRCS   := $(wildcard  $(SRCDIR)/*.tex)
 SRCS2  := $(SRCS) $(wildcard src/images/*)
+DOCS   := $(wildcard  docs/*.md)
 
 #
 # Latex コンパイル方法の定義マクロ
@@ -120,6 +121,7 @@ localclean:
 
 localup:
 	cp -rL $(SRCDIR)/* work/
+	 git describe --tags `git rev-list --tags --max-count=1` > work/version.txt
 
 local-lint:
-	npx textlint -f pretty-error README.md $(SRCS)
+	npx textlint -f pretty-error README.md $(SRCS) $(DOCS)
