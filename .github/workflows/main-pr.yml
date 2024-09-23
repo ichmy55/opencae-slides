@@ -1,0 +1,10 @@
+name: main-pull request
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  textlint-reviewdog:
+    uses: ./.github/workflows/textlint-reviewdog.yml

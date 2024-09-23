@@ -20,7 +20,7 @@ RUN apt -y install fonts-firacode fonts-noto
 #
 # コンパイルテストもします.Texは最初のコンパイル時に,
 # かなりの時間を要するのを削減するためです.
-#
+# 
 ARG USERNAME=ubuntu
 ARG GROUPNAME=ubuntu
 USER $USERNAME
