@@ -35,7 +35,7 @@ jobs:
             return tag;
       - name: "Overwrite the VERSION.txt"
         env:
-          RESULT: ${{steps.step1.outputs.result}}
+          RESULT: 'sprint${{ steps.get_tag.outputs.result }}'
         run: echo $RESULT > VERSION.txt
       - name: "build PDF"
         run:  make localbuild
