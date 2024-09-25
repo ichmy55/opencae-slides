@@ -11,15 +11,31 @@ jobs:
       image : ghcr.io/ichmy55/opencae-slides/texcomp:main
       options: --user 1001:118
     steps:
-      - name: "Checkout  repository"
-        uses: actions/checkout@v4
-      - name: get tag name
-        run: echo "TAG_NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Get latest release tag
+        id: get_tag
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const repo = context.repo;
+            const { data } = await github.rest.repos.getLatestRelease({
+                owner: repo.owner,
+                repo: repo.repo,
+            });
+            let tag = data.tag_name;
+            console.log(data)
+            const regex = /sprint(\d+)/;
+            const match = tag.match(regex);
+            if (match) {
+              const sprintNumber = parseInt(match[1]);
+              tag = sprintNumber + 1;
+            }
+            return tag;
       - name: "Overwrite the VERSION.txt"
         run: |
-          echo "TAG=${{ github.ref_name }}" >> "$GITHUB_ENV"
-          echo "${{ env.TAG }}" 
-          echo "${{ env.TAG }}" > VERSION.txt
+          echo 'sprint${{ steps.get_tag.outputs.result }}' > VERSION.txt
       - name: "build PDF"
         run:  make localbuild
       - name: 'Upload Artifact'
