@@ -34,7 +34,9 @@ jobs:
             }
             return tag;
       - name: "Overwrite the VERSION.txt"
-        run: echo '${{ steps.get_tag.outputs.result }}' > VERSION.txt
+        env:
+          RESULT: ${{steps.step1.outputs.result}}
+        run: echo $RESULT > VERSION.txt
       - name: "build PDF"
         run:  make localbuild
       - name: 'Upload Artifact'
