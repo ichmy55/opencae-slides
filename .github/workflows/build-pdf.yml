@@ -13,10 +13,13 @@ jobs:
     steps:
       - name: "Checkout  repository"
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: get tag name
+        run: echo "TAG_NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: "Overwrite the VERSION.txt"
-        run:  git describe --abbrev=0 --tags | tee VERSION.txt
+        run: |
+          echo "${TAG_NAME}"
+          echo "${{ env.TAG_NAME }}"
+          echo "${{ env.TAG_NAME }}" > VERSION.txt
       - name: "build PDF"
         run:  make localbuild
       - name: 'Upload Artifact'
