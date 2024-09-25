@@ -35,7 +35,7 @@ jobs:
             return tag;
       - name: "Overwrite the VERSION.txt"
         run: |
-          echo 'steps.get_tag.outputs.result' > VERSION.txt
+          echo '{ steps.get_tag.outputs.result }' > VERSION.txt
       - name: "build PDF"
         run:  make localbuild
       - name: 'Upload Artifact'
