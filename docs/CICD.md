@@ -1,18 +1,3 @@
-## CI/CD
-<!-- textlint-disable prh -->
-本リポジトリでは,自動校正に以下のルールを用いています.
-<!-- textlint-enable prh -->
-| ルール名 | ルール概要 | ルールの配布元 |
-| ---- | ---- | ---- |
-| preset-ja-spacing |日本語周りにおけるスペースの有無| [GitHub](https://github.com/textlint-ja/textlint-rule-preset-ja-spacing)|
-| textlint-rule-prh |表記ゆれの修正のための辞書ベースのツール| [GitHub](https://github.com/textlint-rule/textlint-rule-prh)|
-
-また,自動校正に以下の辞書を用いています.
-| 辞書名 | 辞書概要 | 参照先 |
-| ---- | ---- | ---- |
-| WEB+DB_PRESS |prhに同梱された標準辞書| [GitHub](https://github.com/prh/prh)|
-| Opencae-sosj |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
-
 ## Branch
 本リポジトリでは、以下３段階のブランチを使用しています
 | 所在 | 名称 | 概要 |
@@ -20,6 +5,22 @@
 | ローカル |origin| ご自身お手元のPC上のブランチ|
 | リモート |development| 開発用ブランチでいつでもPUSH可能|
 |^         |main| 上記ブランチで問題ないことを確認の上PR。直接PUSH禁止|
+
+## CI/CD
+本リポジトリでは,CI/CD用のGithub actions 設定ファイルを大きく分けて2種類用意し、設定しています.
+### (1) タイミング設定用ファイル
+本リポジトリでは,各起動タイミングごとの実施内容を記述するファイルを設けています
+| ファイル名       | 起動タイミング                                |
+| ---------------- | --------------------------------------------- | 
+| develop-push.yml |developmentブランチへのPUSHが行われたとき      |
+| main-pr.yml      |mainブランチへのPRが発行されたとき             |
+| main-push.yml    |PRが承認されmainブランチへのmergeが行われたとき|
+
+また,自動校正に以下の辞書を用いています.
+| 辞書名 | 辞書概要 | 参照先 |
+| ---- | ---- | ---- |
+| WEB+DB_PRESS |prhに同梱された標準辞書| [GitHub](https://github.com/prh/prh)|
+| Opencae-sosj |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
 
 ## Versioning strategies
 本リポジトリでは、セマンティック バージョニングを採用し、以下バージョン戦略を使用しています
