@@ -1,4 +1,4 @@
-name:  Build the PDF at push to main
+name:  JOBS at push to main
 
 on:
   push:
@@ -8,3 +8,9 @@ on:
 jobs:
   build-pdf:
     uses: ./.github/workflows/build-pdf.yml
+
+  package-textcomp:
+    uses: ./.github/workflows/package-textcomp.yml
+
+  package-textlint:
+    uses: ./.github/workflows/package-textlint.yml
