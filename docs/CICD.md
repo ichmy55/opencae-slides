@@ -18,4 +18,4 @@
 | ---- | ---- | ---- |
 | ローカル |prhに同梱された標準辞書| [GitHub](https://github.com/prh/prh)|
 | リモート |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
-| ^        |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
+|^         |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
