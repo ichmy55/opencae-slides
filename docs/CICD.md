@@ -7,20 +7,28 @@
 |^         |main| 上記ブランチで問題ないことを確認の上PR。直接PUSH禁止|
 
 ## CI/CD
-本リポジトリでは,CI/CD用のGithub actions 設定ファイルを大きく分けて2種類用意し、設定しています.
-### (1) タイミング設定用ファイル
+本リポジトリでは,CI/CD用のGitHub actions設定ファイルを大きく分けて4種類用意し、設定しています.
+(1) タイミング設定ファイル
 本リポジトリでは,各起動タイミングごとの実施内容を記述するファイルを設けています
 | ファイル名       | 起動タイミング                                |
 | ---------------- | --------------------------------------------- | 
 | develop-push.yml |developmentブランチへのPUSHが行われたとき      |
 | main-pr.yml      |mainブランチへのPRが発行されたとき             |
 | main-push.yml    |PRが承認されmainブランチへのmergeが行われたとき|
+ここには,具体的な実施内容は書かず,下記(2)各ファイルの呼び出しのみ行います
 
-また,自動校正に以下の辞書を用いています.
-| 辞書名 | 辞書概要 | 参照先 |
-| ---- | ---- | ---- |
-| WEB+DB_PRESS |prhに同梱された標準辞書| [GitHub](https://github.com/prh/prh)|
-| Opencae-sosj |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
+(2) 実施内容設定ファイル
+具体的な実施内容は,以下ファイルに記載しています
+| 起動タイミング |||  |  |
+| develop-push | main-pr | main-push | ファイル名             | 内容                                              |
+| :----------: | :-----: | :-------: | ---------------------- | ------------------------------------------------- |
+|  〇          |         |           | build-pdf.yml          | PDFファイルをbuildします                          |
+|              |  〇     |           | textlint-reviewdog.yml | textlint実施し、問題があればPRにコメントを加えます|
+|              |         | 〇        | release-drafter.yml    | リリースを作成し、バージョンを更新します          |
+|              |         | (※注1)    | package-textcomp.yml   | PDFファイルのbuild用のDocker imageを生成します    |
+|              |         | (※注2)    | package-textcomp.yml   | textlint実施用のDocker imageを生成します          |
+(※注1)：PDFファイルのbuild用のDockerfileが変更されたときのみ走ります.
+(※注2)：textlint実施用のDockerfile2が変更されたときのみ走ります.
 
 ## Versioning strategies
 本リポジトリでは、セマンティック バージョニングを採用し、以下バージョン戦略を使用しています
