@@ -1,4 +1,4 @@
-## Textlint
+## CI/CD
 <!-- textlint-disable prh -->
 本リポジトリでは,自動校正に以下のルールを用いています.
 <!-- textlint-enable prh -->
@@ -13,3 +13,9 @@
 | WEB+DB_PRESS |prhに同梱された標準辞書| [GitHub](https://github.com/prh/prh)|
 | Opencae-sosj |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
 
+本リポジトリでは、以下３段階のブランチを使用しています
+| 所在 | 辞書概要 | 参照先 |
+| ---- | ---- | ---- |
+| ローカル |prhに同梱された標準辞書| [GitHub](https://github.com/prh/prh)|
+| リモート |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
+| ^        |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
