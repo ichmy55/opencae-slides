@@ -21,14 +21,14 @@
 (2) 実施内容設定ファイル
 具体的な実施内容は,以下ファイルに記載しています.
 
-| 起動タイミング   |         |           |                        |                                                   |
-| :--------------: | :-----: | :-------: | ---------------------- | ------------------------------------------------- |
-| develop-<br>push | main-pr | main-push | ファイル名             | 内容                                              |
-|  〇              |         |           | build-pdf.yml          | PDFファイルをbuildします                          |
-|                  |  〇     |           | textlint-reviewdog.yml | textlint実施し、問題があればPRにコメントを加えます|
-|                  |         | 〇        | release-drafter.yml    | リリースを作成し、バージョンを更新します          |
-|                  |         | (※注1)    | package-textcomp.yml   | PDFファイルのbuild用のDocker imageを生成します    |
-|                  |         | (※注2)    | package-textcomp.yml   | textlint実施用のDocker imageを生成します          |
+|                        |                                                   | 起動タイミング   |         |           |
+| :--------------------- | :------------------------------------------------ | :--------------: | :-----: | :-------: |
+| ファイル名             | 内容                                              | develop-<br>push | main-pr | main-push | 
+| build-pdf.yml          | PDFファイルをbuildします                          |  〇              |         |           |
+| textlint-reviewdog.yml | textlint実施し、問題があればPRにコメントを加えます|                  |  〇     |           |
+| release-drafter.yml    | リリースを作成し、バージョンを更新します          |                  |         | 〇        |
+| package-textcomp.yml   | PDFファイルのbuild用のDocker imageを生成します    |                  |         | (※注1)    |
+| package-textlint.yml   | textlint実施用のDocker imageを生成します          |                  |         | (※注2)    |
 
 (※注1)：PDFファイルのbuild用のDockerfileが変更されたときのみ走ります.  
 (※注2)：textlint実施用のDockerfile2が変更されたときのみ走ります.
