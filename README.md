@@ -72,6 +72,9 @@ Dokerfileを参考にして,設定してください.
 本リポジトリで使用する自動校正にて使用するルールは [リンク先](docs/Textlint.md)にて説明しています
 <!-- textlint-enable prh -->
 
+## CI/CD
+本リポジトリで使用するCI/CDにて使用するルールは [リンク先](docs/CICD.md)にて説明しています
+
 ## Distribution
 生成したスライドPDFは,[Docswell](https://www.docswell.com/user/ichmy55) にて公開しています.
 
