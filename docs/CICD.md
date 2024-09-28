@@ -14,8 +14,8 @@
 | Opencae-sosj |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
 
 本リポジトリでは、以下３段階のブランチを使用しています
-| 所在 | 辞書概要 | 参照先 |
+| 所在 | 名称 | 概要 |
 | ---- | ---- | ---- |
-| ローカル |prhに同梱された標準辞書| [GitHub](https://github.com/prh/prh)|
-| リモート |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
-|^         |OpenFOAM マニュアル和訳における LaTeX コーディング・ルールの一部抜粋| [OpenCAE学会](https://www.opencae.or.jp/activity/translation/openfoam_latex/)|
+| ローカル |origin| 自分のお手元のパソコン上のブランチ|
+| リモート |development| 開発用ブランチでいつでもPUSH可能|
+|^         |main| 上記ブランチで問題ないことを確認の上PR。直接PUSH禁止|
