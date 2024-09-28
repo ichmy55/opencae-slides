@@ -15,6 +15,7 @@
 | develop-push.yml |developmentブランチへのPUSHが行われたとき      |
 | main-pr.yml      |mainブランチへのPRが発行されたとき             |
 | main-push.yml    |PRが承認されmainブランチへのmergeが行われたとき|
+
 ここには,具体的な実施内容は書かず,下記(2)各ファイルの呼び出しのみ行います
 
 (2) 実施内容設定ファイル
@@ -27,6 +28,7 @@
 |              |         | 〇        | release-drafter.yml    | リリースを作成し、バージョンを更新します          |
 |              |         | (※注1)    | package-textcomp.yml   | PDFファイルのbuild用のDocker imageを生成します    |
 |              |         | (※注2)    | package-textcomp.yml   | textlint実施用のDocker imageを生成します          |
+
 (※注1)：PDFファイルのbuild用のDockerfileが変更されたときのみ走ります.
 (※注2)：textlint実施用のDockerfile2が変更されたときのみ走ります.
 
