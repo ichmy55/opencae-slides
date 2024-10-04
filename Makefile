@@ -6,9 +6,7 @@
 #
 DOCKER := docker
 DOCKER_IMAGE  := ghcr.io/ichmy55/opencae-slides/texcomp:main
-DOCKER_IMAGE2 := ghcr.io/ichmy55/opencae-slides/textlint:main
 DOCKER_NAME   := opencae-slides
-DOCKER_NAME2  := opencae-textlint
 #
 # Latex エンジン
 #
