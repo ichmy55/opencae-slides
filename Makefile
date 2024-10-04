@@ -46,12 +46,10 @@ first: localbuild
 #
 # コンテナを初期設定します
 up:
-	$(DOCKER) pull $(DOCKER_IMAGE)
-	$(DOCKER) pull $(DOCKER_IMAGE2)
-	$(DOCKER) rm -f  $(DOCKER_NAME)
-	$(DOCKER) rm -f  $(DOCKER_NAME2)
-	$(DOCKER) run -d --name $(DOCKER_NAME)  $(DOCKER_IMAGE) sleep infinity
-	$(DOCKER) run -d --name $(DOCKER_NAME2) $(DOCKER_IMAGE2) sleep infinity
+	make down
+	$(DOCKER) build . -t $(DOCKER_NAME)
+	$(DOCKER) run -d -v $(PWD)/src:/home/ubuntu/src -v $(PWD)/rules:/home/ubuntu/rules --name $(DOCKER_NAME) $(DOCKER_NAME)
+	make build
 	make clean
 #
 # コンテナを確認します
@@ -61,46 +59,38 @@ ps:
 # コンテナの停止
 stop:
 	@$(DOCKER) stop $(DOCKER_NAME)
-	@$(DOCKER) stop $(DOCKER_NAME2)
 #
 # コンテナを停止し，upで作成したコンテナ，ネットワーク，ボリューム，イメージを削除
 # 
 down:
 	$(DOCKER) rm -f  $(DOCKER_NAME)
-	$(DOCKER) rm -f  $(DOCKER_NAME2)
 #
 # コンテナ上のデータ整理（いったん全部消して、ローカルから持上）
 # 
 clean:
-	@$(DOCKER) exec -it opencae-slides rm -rf *
-	@$(DOCKER) cp Makefile opencae-slides:/home/ubuntu/
-	@$(DOCKER) cp src opencae-slides:/home/ubuntu/src
-	@$(DOCKER) exec -it opencae-textlint rm -rf *
-	@$(DOCKER) cp Makefile opencae-textlint:/home/ubuntu/
-	@$(DOCKER) cp README.md opencae-textlint:/home/ubuntu/
-	@$(DOCKER) cp .textlintrc.json opencae-textlint:/home/ubuntu/
-	@$(DOCKER) cp src opencae-textlint:/home/ubuntu/src
-	@$(DOCKER) cp rules opencae-textlint:/home/ubuntu/rules
+	@$(DOCKER) cp Makefile  $(DOCKER_NAME):/home/ubuntu/
+	@$(DOCKER) cp README.md $(DOCKER_NAME):/home/ubuntu/
+	@$(DOCKER) cp .textlintrc.json $(DOCKER_NAME):/home/ubuntu/
+	@$(DOCKER) cp VERSION.txt $(DOCKER_NAME):/home/ubuntu/
+	@$(DOCKER) exec -it $(DOCKER_NAME) make localclean
 #
 # コンテナ上のビルド
 # 
 build:
 	make clean
-	@$(DOCKER) exec -it opencae-slides make localbuild
-	@$(DOCKER) cp opencae-slides:/home/ubuntu/dist .
+	@$(DOCKER) exec -it $(DOCKER_NAME) make localbuild
+	@$(DOCKER) cp $(DOCKER_NAME):/home/ubuntu/dist .
 #
 # コンテナ上のLint
 # 
 lint:
 	make clean
-	@$(DOCKER) exec -it opencae-textlint make local-lint
+	@$(DOCKER) exec -it $(DOCKER_NAME) make local-lint
 #
 # コンテナへのログイン
 # 
 bash:
-	@$(DOCKER) exec -it opencae-slides bash
-bash2:
-	@$(DOCKER) exec -it opencae-textlint bash
+	@$(DOCKER) exec -it $(DOCKER_NAME) /bin/bash
 #
 # ローカルでのビルド関連ターゲット
 #
