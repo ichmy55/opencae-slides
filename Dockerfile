@@ -14,6 +14,8 @@ RUN apt -y upgrade
 RUN apt -y install sudo make fontconfig
 RUN apt -y install texlive-full
 RUN apt -y install fonts-firacode fonts-noto
+RUN apt -y install nodejs npm
+RUN npm install -g textlint textlint-plugin-latex2e textlint-rule-preset-japanese textlint-rule-preset-ja-spacing textlint-filter-rule-comments textlint-rule-prh
 
 #
 # コンパイル環境を作成します.
@@ -25,8 +27,10 @@ ARG USERNAME=ubuntu
 ARG GROUPNAME=ubuntu
 USER $USERNAME
 WORKDIR /home/$USERNAME/
-COPY --chown=$USERNAME:$GROUPNAME src /home/$USERNAME/src
-COPY --chown=$USERNAME:$GROUPNAME Makefile /home/$USERNAME/
-RUN  make localbuild
-RUN  make localclean
-RUN  rm -r src/* Makefile
+ENV PATH=/home/$USERNAME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENTRYPOINT ["sleep", "infinity"]
+
+#COPY  Makefile /HOME/$USERNAME/
+#COPY  Version.txt /HOME/$USERNAME/
+#RUN  MAKE LOCALBUILD
+#RUN  MAKE LOCALCLEAN

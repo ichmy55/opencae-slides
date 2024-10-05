@@ -31,7 +31,6 @@ $ git clone https://github.com/ichmy55/opencae-slides.git
 ├── README.md.................説明書
 ├── Makefile..................Texコンパイル方法を記載したレシピファイル.
 ├── Dockerfile................Texコンパイル用のDockerイメージのレシピ.
-├── Dockerfile2...............Textlintで自動校正用のDockerイメージのレシピ.
 ├── .github
 │   ├── script................reviewdog用スクリプト
 │   └── workflow..............GitHubでのCI/CO設定ファイル.
