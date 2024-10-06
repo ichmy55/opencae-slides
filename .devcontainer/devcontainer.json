@@ -1,18 +1,12 @@
 {
   "name": "opencae-slides",
-  "dockerComposeFile": [
-    "../compose.yml",
-    "compose-devcontainer.yml"
-  ],
-  "service": "opencae-slides",
-  "workspaceFolder": "/usr/ubuntu/src",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "stylelint.vscode-stylelint"
-      ]
-    }
-  }
+  "build": {
+	"context": "..",
+	"dockerfile": "../Dockerfile"
+  },
+  "features": {
+	"ghcr.io/guiyomh/features/vim:0": {}
+  },
+  "remoteUser": "ubuntu",
+  "updateRemoteUserUID": true
 }
