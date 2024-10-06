@@ -15,6 +15,3 @@ jobs:
 
   package-textcomp:
     uses: ./.github/workflows/package-textcomp.yml
-
-  package-textlint:
-    uses: ./.github/workflows/package-textlint.yml
