@@ -2,6 +2,11 @@
 # Texをコンパイルする環境を作成する Makefile
 #
 #
+# ターゲット一覧
+#
+.PHONY: help up ps stop down  clean build bash localbuild localclean localup localtest local-lint
+.DEFAULT_GOAL := help
+#
 # Docker コマンドマクロ
 #
 DOCKER := docker
@@ -34,65 +39,57 @@ $(2): $(1)
 endef
 
 #
-# ターゲット一覧
-#
-.PHONY: first up ps stop down  clean build bash localbuild localclean localup localtest local-lint
-#
-first: localbuild
+help: ## ヘルプを表示する
+	@echo "Example operations by makefile."
+	@echo ""
+	@echo "Usage: make SUB_COMMAND argument_name=argument_value"
+	@echo ""
+	@echo "Command list:"
+	@echo ""
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
+		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 #
 # Docker compose 制御ターゲット
 #
-# コンテナを初期設定します
-up:
+up: ## コンテナを初期化します
 	make down
 	$(DOCKER) build . -t $(DOCKER_NAME)
 	$(DOCKER) run -d -v $(PWD)/src:/home/ubuntu/src -v $(PWD)/rules:/home/ubuntu/rules --name $(DOCKER_NAME) $(DOCKER_NAME)
 	make build
 	make clean
 #
-# コンテナを確認します
-ps:
-	@$(DOCKER) ps -a
-#
-# コンテナの停止
-stop:
+stop: ## コンテナを停止します
 	@$(DOCKER) stop $(DOCKER_NAME)
 #
-# コンテナを停止し，upで作成したコンテナ，ネットワーク，ボリューム，イメージを削除
-# 
-down:
-	$(DOCKER) rm -f  $(DOCKER_NAME)
+down: ## コンテナを停止し，upで作成したコンテナ，ネットワーク，ボリューム，イメージを削除
+	@$(DOCKER) rm -f  $(DOCKER_NAME)
 #
-# コンテナ上のデータ整理（いったん全部消して、ローカルから持上）
-# 
-clean:
+clean: ## コンテナ上のデータ整理（いったん全部消して、ローカルから持上）
 	@$(DOCKER) cp Makefile  $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp README.md $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp .textlintrc.json $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp VERSION.txt $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) exec -it $(DOCKER_NAME) make localclean
 #
-# コンテナ上のビルド
-# 
-build:
+ps: ## コンテナを確認します
+	@$(DOCKER) ps -a
+#
+build: ## latexからpdfにコンパイルします
 	make clean
 	@$(DOCKER) exec -it $(DOCKER_NAME) make localbuild
 	@$(DOCKER) cp $(DOCKER_NAME):/home/ubuntu/dist .
 #
-# コンテナ上のLint
 # 
-lint:
+lint: ## latexをLintにかけます
 	make clean
 	@$(DOCKER) exec -it $(DOCKER_NAME) make local-lint
 #
-# コンテナへのログイン
-# 
-bash:
+bash: ## コンテナへログインします
 	@$(DOCKER) exec -it $(DOCKER_NAME) /bin/bash
 #
 # ローカルでのビルド関連ターゲット
 #
-localbuild: pdf-files
+localbuild: pdf-files ## ローカル環境下でlatex→pdfにコンパイルします
 
 pdf-files: $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF)))
 
@@ -104,12 +101,13 @@ $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS2)
 	mv 000-main.pdf $@
 	rm -f 000-main.*
 
-localclean:
+local-lint: ## ローカル環境下でlatexをlintにかけます
+	npx textlint -f pretty-error README.md $(SRCS) $(DOCS)
+
+localclean: ## ローカル環境の不要ファイルを消します
 	rm -rf  000-main.* work dist; mkdir -p dist work
 
-localup:
+localup: ## ローカル環境でpdfコンパイルの準備のためファイルを配置します
 	cp -rL $(SRCDIR)/* work/
 	cp VERSION.txt  work/
 
-local-lint:
-	npx textlint -f pretty-error README.md $(SRCS) $(DOCS)
