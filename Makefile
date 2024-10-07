@@ -64,28 +64,57 @@ stop: ## コンテナを停止します
 down: ## コンテナを停止し，upで作成したコンテナ，ネットワーク，ボリューム，イメージを削除
 	@$(DOCKER) rm -f  $(DOCKER_NAME)
 #
-clean: ## コンテナ上のデータ整理（いったん全部消して、ローカルから持上）
+ps: ## コンテナを確認します
+	@$(DOCKER) ps -a
+#
+bash: ## コンテナへログインします
+	@$(DOCKER) exec -it $(DOCKER_NAME) /bin/bash
+#
+# 現在Docker内か外か？を自動判定し分岐します
+# Docker内環境からはローカルで実行します
+# Docker外環境からはDocker環境を立ち上げ、そちらで実行するようにします
+# どちらで実行するか強制したい場合は、ここより下にある、remote***やlocal***などの
+# 接頭語がついたターゲットを使用してください
+#
+build: ## latexからpdfにコンパイルします(環境は自動判別)
+ifndef CONTAINER_ENV
+	make remotebuild
+else
+	make localbuild
+endif
+#
+lint: ## latexをLintにかけます(環境は自動判別)
+ifndef CONTAINER_ENV
+	make remotelint
+else
+	make local-lint
+endif
+clean: ## データ整理(環境は自動判別)
+ifndef CONTAINER_ENV
+	make remoteclean
+else
+	make localclean
+endif
+#
+# コンテナ環境下でのビルド関連ターゲット
+#
+remotebuild: ## コンテナ環境にてlatexからpdfにコンパイルします
+	make remoteclean
+	@$(DOCKER) exec -it $(DOCKER_NAME) make localbuild
+	@$(DOCKER) cp $(DOCKER_NAME):/home/ubuntu/dist .
+#
+# 
+remotelint: ## コンテナ環境にてlatexをLintにかけます
+	make remoteclean
+	@$(DOCKER) exec -it $(DOCKER_NAME) make local-lint
+#
+remoteclean: ## コンテナ上のデータ整理（いったん全部消して、ローカルから持上）
+	make localclean
 	@$(DOCKER) cp Makefile  $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp README.md $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp .textlintrc.json $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp VERSION.txt $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) exec -it $(DOCKER_NAME) make localclean
-#
-ps: ## コンテナを確認します
-	@$(DOCKER) ps -a
-#
-build: ## latexからpdfにコンパイルします
-	make clean
-	@$(DOCKER) exec -it $(DOCKER_NAME) make localbuild
-	@$(DOCKER) cp $(DOCKER_NAME):/home/ubuntu/dist .
-#
-# 
-lint: ## latexをLintにかけます
-	make clean
-	@$(DOCKER) exec -it $(DOCKER_NAME) make local-lint
-#
-bash: ## コンテナへログインします
-	@$(DOCKER) exec -it $(DOCKER_NAME) /bin/bash
 #
 # ローカルでのビルド関連ターゲット
 #
@@ -107,7 +136,6 @@ local-lint: ## ローカル環境下でlatexをlintにかけます
 localclean: ## ローカル環境の不要ファイルを消します
 	rm -rf  000-main.* work dist; mkdir -p dist work
 
-localup: ## ローカル環境でpdfコンパイルの準備のためファイルを配置します
+localup:
 	cp -rL $(SRCDIR)/* work/
 	cp VERSION.txt  work/
-
