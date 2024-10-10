@@ -15,7 +15,7 @@ DOCKER_NAME   := opencae-slides
 #
 # Latex エンジン
 #
-LATEXENG := lualatex
+LATEXENG := latexmk -lualatex
 #
 # 作成するスライド名
 #
@@ -53,10 +53,12 @@ help: ## ヘルプを表示する
 #
 up: ## コンテナを初期化します
 	make down
-	$(DOCKER) build . -t $(DOCKER_NAME)
-	$(DOCKER) run -d -v $(PWD)/src:/home/ubuntu/src -v $(PWD)/rules:/home/ubuntu/rules --name $(DOCKER_NAME) $(DOCKER_NAME)
-	make build
-	make clean
+	rm -rf ltcache
+	mkdir ltcache
+	@$(DOCKER) build . -t $(DOCKER_NAME)
+	@$(DOCKER) run -d -v $(PWD)/src:/home/ubuntu/src -v $(PWD)/rules:/home/ubuntu/rules  -v$(PWD)/ltcache:/home/ubuntu/.texlive2023 --name $(DOCKER_NAME) $(DOCKER_NAME)
+	make remoteclean
+	@$(DOCKER) exec -it $(DOCKER_NAME) luaotfload-tool --update
 #
 stop: ## コンテナを停止します
 	@$(DOCKER) stop $(DOCKER_NAME)
@@ -110,7 +112,7 @@ remotelint: ## コンテナ環境にてlatexをLintにかけます
 #
 remoteclean: ## コンテナ上のデータ整理（いったん全部消して、ローカルから持上）
 	make localclean
-	@$(DOCKER) cp Makefile  $(DOCKER_NAME):/home/ubuntu/
+	@$(DOCKER) cp ./Makefile  $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp README.md $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp .textlintrc.json $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp VERSION.txt $(DOCKER_NAME):/home/ubuntu/
@@ -126,7 +128,6 @@ $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS2)
 	make localclean
 	make localup
 	@$(LATEXENG) work/000-main.tex
-	@$(LATEXENG) work/000-main.tex
 	mv 000-main.pdf $@
 	rm -f 000-main.*
 
@@ -139,3 +140,7 @@ localclean: ## ローカル環境の不要ファイルを消します
 localup:
 	cp -rL $(SRCDIR)/* work/
 	cp VERSION.txt  work/
+
+distclean: ## ローカル環境の不要ファイルを消し、latexのフォントキャッシュも消します
+	make localclean
+	rm -rf  ltcache
