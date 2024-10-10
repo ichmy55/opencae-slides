@@ -24,16 +24,5 @@ ARG USERNAME=ubuntu
 ARG GROUPNAME=ubuntu
 USER $USERNAME
 WORKDIR /home/$USERNAME/
-ENV PATH=/home/$USERNAME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=/home/$USERNAME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin LANG=ja_JP.UTF-8 LANGUAGE=ja_JP:ja LC_ALL=ja_JP.UTF-8 TERM=xterm CONTAINER_ENV=true
 ENTRYPOINT ["sleep", "infinity"]
-# その他環境変数など
-ENV LANG ja_JP.UTF-8
-ENV LANGUAGE ja_JP:ja
-ENV LC_ALL ja_JP.UTF-8
-ENV TERM xterm
-ENV CONTAINER_ENV true
-
-#COPY  Makefile /HOME/$USERNAME/
-#COPY  Version.txt /HOME/$USERNAME/
-#RUN  MAKE LOCALBUILD
-#RUN  MAKE LOCALCLEAN
