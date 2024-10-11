@@ -13,7 +13,7 @@ jobs:
   package-textcomp:
     uses: ./.github/workflows/package-textcomp.yml
 
-  release-drafterf:
+  release-drafter:
     uses: ./.github/workflows/release-drafter.yml
 
   build-pdf:
