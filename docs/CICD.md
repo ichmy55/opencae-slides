@@ -27,10 +27,8 @@
 | textlint-reviewdog.yml | textlint実施し、問題があればPRにコメントを加えます|                  |  〇     |           |
 | release-drafter.yml    | リリースを作成し、バージョンを更新します          |                  |         | 〇        |
 | package-textcomp.yml   | PDFファイルのbuild用のDocker imageを生成します    |                  |         | (※注1)    |
-| package-textlint.yml   | textlint実施用のDocker imageを生成します          |                  |         | (※注2)    |
 
 (※注1)：PDFファイルのbuild用のDockerfileが変更されたときのみ走ります.  
-(※注2)：textlint実施用のDockerfile2が変更されたときのみ走ります.
 
 (3) 設定ファイル  
 上記実施に必要な設定ファイルは,以下に記載しています.  
