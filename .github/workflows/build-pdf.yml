@@ -37,11 +37,14 @@ jobs:
         env:
           RESULT: '${{ steps.get_tag.outputs.result }}'
         run: echo $RESULT > VERSION.txt
+      - name: "Get the pdf name"
+        run: make name >> $GITHUB_ENV
+
       - name: "build PDF"
         run:  make localbuild
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
-          name: dist-pdf
-          path: dist/**
+          name: $DEST_PDF
+          path: dist/$DEST_PDF
           retention-days: 5
