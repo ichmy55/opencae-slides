@@ -18,6 +18,6 @@ jobs:
     uses: ./.github/workflows/release-drafter.yml
 
   build-pdf:
-    needs: [release-drafter]
+    needs: [package-textcomp,release-drafter]
     uses: ./.github/workflows/build-pdf.yml
 
