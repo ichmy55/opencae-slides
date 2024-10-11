@@ -16,3 +16,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           commitish: main
+          publish: true

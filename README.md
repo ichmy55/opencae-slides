@@ -47,6 +47,8 @@ $ git clone https://github.com/ichmy55/opencae-slides.git
 │    
 ├── dist......................このディレクトリに結果pdfが生成されます.Make時に生成されます.
 └── work......................ワーク用です.Make時に生成されます.
+└── ltcache...................Latexのフォントキャッシュ用です.コンテナUp時に生成されます.(ローカル環境時)
+                              ※ コンテナ内部では texlive標準の~/.texlive2023 以下にキャッシュが置かれます
 </pre>
 
 ## Settings of  Makefile

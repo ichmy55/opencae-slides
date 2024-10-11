@@ -10,8 +10,13 @@ permissions:
   packages: write
 
 jobs:
-  build-pdf:
-    uses: ./.github/workflows/build-pdf.yml
-
   package-textcomp:
     uses: ./.github/workflows/package-textcomp.yml
+
+  release-drafterf:
+    uses: ./.github/workflows/release-drafter.yml
+
+  build-pdf:
+    needs: [release-drafter]
+    uses: ./.github/workflows/build-pdf.yml
+
