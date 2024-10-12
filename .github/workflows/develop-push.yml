@@ -8,3 +8,7 @@ on:
 jobs:
   build-pdf:
     uses: ./.github/workflows/build-pdf.yml
+
+  testw:
+    needs: [build-pdf]
+    uses: ./.github/workflows/testw.yml

@@ -16,21 +16,13 @@ jobs:
           name: dest_pdf
       - name: get the pdf name
         run:  make name >> $GITHUB_ENV
-      - name: test
+      - name: Extract the pdf
         run: |
+          pwd
           echo qwe1
-          echo  ${{ secrets.GITHUB_TOKEN }}
+          ls -l
           echo qwe2
-          echo  ${{ env.DEST_PDF }}
+          make name
           echo qwe3
-          echo  ${{ env.UPLOAD_URL }}
+          echo ${{ env.DEST_PDF }}
           echo qwe4
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ env.UPLOAD_URL }}
-          asset_path: ./dest_pdf/${{ env.DEST_PDF }}
-          asset_name: ${{ env.DEST_PDF }}
-          asset_content_type: application/pdf
