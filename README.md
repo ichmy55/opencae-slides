@@ -36,7 +36,7 @@ $ git clone https://github.com/ichmy55/opencae-slides.git
 │   └── workflow..............GitHubでのCI/CO設定ファイル.
 ├── .textlintrc.json..........自動校正textlint用ルールファイル.
 ├── rules ....................自動校正prh用辞書ファイル.
-├── docs. ....................本リポジトリの説明書
+├── docs .....................本リポジトリの説明書
 ├── package-lock.json ........reviewdog 実行用ダミー(無視/放置ください).
 │    
 ├── src ......................このディレクトリにTexのソースファイルを配置します.
