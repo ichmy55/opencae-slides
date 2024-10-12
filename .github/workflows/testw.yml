@@ -16,4 +16,7 @@ jobs:
         run: |
           pwd
           ls -l
+          file *
           echo ${{ env.DEST_PDF }}
+          echo ${{ env }}
+          echo qwe
