@@ -19,7 +19,6 @@ jobs:
       - name: test
         run: |
           echo qwe1
-          echo  ${{ secrets.GITHUB_TOKEN }}
           echo qwe2
           echo  ${{ env.DEST_PDF }}
           echo qwe3
