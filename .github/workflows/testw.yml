@@ -25,7 +25,7 @@ jobs:
           echo qwe1
           ls -l
           echo qwe2
-          file *.pdf
+          make name
           echo qwe3
           echo ${{ env.DEST_PDF }}
           echo qwe4
