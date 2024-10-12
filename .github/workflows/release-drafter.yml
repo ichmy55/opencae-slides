@@ -10,8 +10,6 @@ permissions:
 jobs:
   update_release_draft:
     runs-on: ubuntu-24.04
-    outputs:
-      uploadurl: ${{ steps.create_release.outputs.upload_url }}
     steps:
       - name: create_release
         uses: release-drafter/release-drafter@v6
@@ -20,14 +18,8 @@ jobs:
         with:
           commitish: main
           publish: true
-  build-pdf:
-    needs: [update_release_draft]
-    uses: ./.github/workflows/build-pdf.yml
-  upload-pdf:
-    needs: [update_release_draft,build-pdf]
-    name: Upload the beamer PDF  image to release
-    runs-on: ubuntu-24.04
-    steps:
+      - name: build-pdf
+        uses: ./.github/workflows/build-pdf.yml
       - name: checkout
         uses: actions/checkout@v4
       - name: Download the artifact
@@ -39,18 +31,20 @@ jobs:
       - name: test
         run: |
           echo qwe1
-          echo  ${{ secrets.GITHUB_TOKEN }}
+          pwd
           echo qwe2
-          echo  ${{ env.DEST_PDF }}
+          ls -l
           echo qwe3
-          echo  ${{ needs.update_release_draft.uploadurl }}
+          echo  ${{ env.DEST_PDF }}
           echo qwe4
+          echo  ${{ steps.create_release.upload_url }}
+          echo qwe5
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url:  ${{ needs.update_release_draft.uploadurl }}
+          upload_url: ${{ steps.create_release.upload_url }}
           asset_path: ./${{ env.DEST_PDF }}
           asset_name: ${{ env.DEST_PDF }}
           asset_content_type: application/pdf
