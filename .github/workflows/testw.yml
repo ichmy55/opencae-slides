@@ -7,9 +7,6 @@ jobs:
   upload-pdf:
     name: Upload the beamer PDF  image to release
     runs-on: ubuntu-24.04
-    container:
-      image : ghcr.io/ichmy55/opencae-slides/texcomp:main
-      options: --user 1001:118
     steps:
       - name: checkout
         uses: actions/checkout@v4
