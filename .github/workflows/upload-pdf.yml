@@ -13,8 +13,6 @@ jobs:
         with:
           name: dest_pdf
       - name: Extract the pdf
-        run: unzip dest_pdf
-      - name: Extract the pdf
         run: unzip opencae-slides/dest_pdf
 
       - name: Upload Release Asset
