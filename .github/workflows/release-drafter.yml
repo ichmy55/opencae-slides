@@ -11,9 +11,12 @@ jobs:
   update_release_draft:
     runs-on: ubuntu-24.04
     steps:
-      - uses: release-drafter/release-drafter@v6
+      - name create_release
+        uses: release-drafter/release-drafter@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           commitish: main
           publish: true
+      - name export the url
+        run: echo UPLOAD_URL=${{ steps.create_release.outputs.upload_url }} >> $GITHUB_ENV

@@ -144,3 +144,6 @@ localup:
 distclean: ## ローカル環境の不要ファイルを消し、latexのフォントキャッシュも消します
 	make localclean
 	rm -rf  ltcache
+
+name: ## 生成するスライド名を出力します
+	@echo "DEST_PDF=$(DEST_PDF).pdf"

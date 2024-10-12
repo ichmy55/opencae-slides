@@ -1,0 +1,26 @@
+name: Upload the beamer PDF image to release
+
+on:
+  workflow_call:
+
+jobs:
+  upload-pdf:
+    name: Upload the beamer PDF  image to release
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Download the artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dest_pdf
+      - name: Extract the pdf
+        run: unzip dest_pdf.zip
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ env.UPLOAD_URL }}
+          asset_path: ./dest_pdf/${{ env.DEST_PDF }}
+          asset_name: ${{ env.DEST_PDF }}
+          asset_content_type: application/pdf

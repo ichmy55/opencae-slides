@@ -21,3 +21,6 @@ jobs:
     needs: [package-textcomp,release-drafter]
     uses: ./.github/workflows/build-pdf.yml
 
+  upload-pdf:
+    needs: [release-drafter,build-pdf]
+    uses: ./.github/workflows/upload-pdf.yml
