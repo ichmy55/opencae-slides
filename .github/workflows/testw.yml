@@ -7,16 +7,25 @@ jobs:
   upload-pdf:
     name: Upload the beamer PDF  image to release
     runs-on: ubuntu-24.04
+    container:
+      image : ghcr.io/ichmy55/opencae-slides/texcomp:main
+      options: --user 1001:118
     steps:
+      - name: checkout
+        uses: actions/checkout@v4
       - name: Download the artifact
         uses: actions/download-artifact@v4
         with:
           name: dest_pdf
+      - name: get the pdf name
+        run:  make name >> $GITHUB_ENV
       - name: Extract the pdf
         run: |
           pwd
+          echo qwe1
           ls -l
-          file *
+          echo qwe2
+          file *.pdf
+          echo qwe3
           echo ${{ env.DEST_PDF }}
-          echo ${{ env }}
-          echo qwe
+          echo qwe4
