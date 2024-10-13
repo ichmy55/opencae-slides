@@ -22,18 +22,6 @@ jobs:
     needs: [release-drafter]
     uses: ./.github/workflows/build-pdf.yml
 
-  testw2:
-    needs: [release-drafter,build-pdf]
-    runs-on: ubuntu-latest
-    steps:
-      - name: job1からの出力を使用
-        run: |
-          echo qwe1
-          echo ${{ needs.release-drafter.outputs.update_url }}
-          echo qwe2
-          echo ${{ needs.build-pdf.outputs.name_pdf }}
-          echo qwe3
-
   release-update:
     needs: [release-drafter,build-pdf]
     uses: ./.github/workflows/release-update.yml

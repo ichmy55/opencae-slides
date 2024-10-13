@@ -24,17 +24,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dest_pdf
-      - name: test
-        run: |
-          echo qwe1
-          pwd
-          echo qwe2
-          ls -l
-          echo qwe3
-          echo ${{ inputs.upload_url }}
-          echo qwe4
-          echo ${{ inputs.name_pdf }}
-          echo qwe5
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1.0.1
         env:
