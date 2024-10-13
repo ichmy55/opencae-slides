@@ -12,7 +12,7 @@ jobs:
     name: Build the beamer PDF  image
     runs-on: ubuntu-24.04
     outputs:
-      output1: ${{ steps.step1.outputs.dest_pdf }}
+      output1: ${{ steps.nameofpdf.outputs.dest_pdf }}
     container:
       image : ghcr.io/ichmy55/opencae-slides/texcomp:main
       options: --user 1001:118
@@ -48,7 +48,14 @@ jobs:
         run:  make localbuild
       - name: get the pdf name
         id: nameofpdf
-        run:  make name  >> $GITHUB_OUTPUT
+        run:  |
+          echo qwe1
+          make name  >> $GITHUB_OUTPUT
+          echo qwe2
+          make name
+          echo qwe3
+          echo ${{ steps.nameofpdf.outputs.dest_pdf }}
+          echo qwe4
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
