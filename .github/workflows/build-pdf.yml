@@ -56,8 +56,3 @@ jobs:
           name: dest_pdf
           path: dist/*
           retention-days: 5
-      - name: test
-        run:  |
-          echo qwe6
-          echo ${{ steps.nameofpdf.outputs.DEST_PDF }}
-          echo qwe7
