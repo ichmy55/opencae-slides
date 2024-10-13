@@ -11,6 +11,8 @@ jobs:
   update_release_draft:
     runs-on: ubuntu-24.04
     steps:
+      - name: checkout
+        uses: actions/checkout@v4
       - name: create_release
         uses: release-drafter/release-drafter@v6
         env:
@@ -20,8 +22,6 @@ jobs:
           publish: true
       - name: build-pdf
         uses: ./.github/workflows/build-pdf.yml
-      - name: checkout
-        uses: actions/checkout@v4
       - name: Download the artifact
         uses: actions/download-artifact@v4
         with:
