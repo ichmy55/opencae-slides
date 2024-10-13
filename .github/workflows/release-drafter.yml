@@ -27,12 +27,3 @@ jobs:
         with:
           commitish: main
           publish: true
-      - name: test
-        run: |
-          echo qwe1
-          pwd
-          echo qwe2
-          ls -l
-          echo qwe4
-          echo  ${{ steps.create_release.outputs.upload_url }}
-          echo qwe5

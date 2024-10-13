@@ -14,16 +14,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dest_pdf
-      - name: get the pdf name
-        run:  make name >> $GITHUB_ENV
-      - name: test
-        run: |
-          echo qwe1
-          echo qwe2
-          echo  ${{ env.DEST_PDF }}
-          echo qwe3
-          echo  ${{ env.UPLOAD_URL }}
-          echo qwe4
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1.0.1
         env:
