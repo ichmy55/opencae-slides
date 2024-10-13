@@ -2,14 +2,20 @@ name: Release Drafter
 
 on:
   workflow_call:
+    outputs:
+      update_url:
+        description: "Update URL of pdf"
+        value: ${{ jobs.release_draft.outputs.update_url }}
 
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
-  update_release_draft:
+  release_draft:
     runs-on: ubuntu-24.04
+    outputs:
+      update_url: ${{ steps.create_release.upload_url }}
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -20,31 +26,12 @@ jobs:
         with:
           commitish: main
           publish: true
-      - name: build-pdf
-        uses: ./.github/workflows/build-pdf.yml
-      - name: Download the artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: dest_pdf
-      - name: get the pdf name
-        run:  make name >> $GITHUB_ENV
       - name: test
         run: |
           echo qwe1
           pwd
           echo qwe2
           ls -l
-          echo qwe3
-          echo  ${{ env.DEST_PDF }}
           echo qwe4
           echo  ${{ steps.create_release.upload_url }}
           echo qwe5
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.upload_url }}
-          asset_path: ./${{ env.DEST_PDF }}
-          asset_name: ${{ env.DEST_PDF }}
-          asset_content_type: application/pdf

@@ -1,0 +1,46 @@
+name: Release Update
+
+on:
+  workflow_call:
+    inputs:
+      name_pdf:
+        description: Name of the pdf
+        required: true
+        type: string
+      upload_url:
+        description: Upload url of the pdf
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update_release_draft:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Download the artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dest_pdf
+      - name: test
+        run: |
+          echo qwe1
+          pwd
+          echo qwe2
+          ls -l
+          echo qwe3
+          echo ${{ inputs.upload_url }}
+          echo qwe4
+          echo ${{ inputs.name_pdf }}
+          echo qwe5
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ inputs.upload_url }}
+          asset_path: ./${{ inputs.name_pdf }}
+          asset_name: ${{ inputs.name_pdf }}
+          asset_content_type: application/pdf

@@ -12,3 +12,17 @@ jobs:
   testw:
     needs: [build-pdf]
     uses: ./.github/workflows/testw.yml
+    with:
+      name_pdf:  ${{ needs.build-pdf.outputs.name_pdf }}
+
+  testw2:
+    needs: [build-pdf]
+    runs-on: ubuntu-latest
+    steps:
+      - name: job1からの出力を使用
+        run: |
+          echo qwe1
+          echo ${{ needs.build-pdf.outputs }}
+          echo qwe2
+          echo ${{ needs.build-pdf.outputs.name_pdf }}
+          echo qwe3

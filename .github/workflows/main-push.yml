@@ -17,3 +17,14 @@ jobs:
   release-drafter:
     needs: [package-textcomp]
     uses: ./.github/workflows/release-drafter.yml
+
+  build-pdf:
+    needs: [release-drafter]
+    uses: ./.github/workflows/build-pdf.yml
+
+  release-update:
+    needs: [release-drafter,build-pdf]
+    uses: ./.github/workflows/release-update.yml
+    with:
+      upload_url:  ${{ needs.release-drafter.outputs.name_pdf }}
+      name_pdf:    ${{ needs.build-pdf.outputs.name_pdf }}

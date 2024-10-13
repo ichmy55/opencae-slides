@@ -2,11 +2,17 @@ name: Build the beamer PDF image
 
 on:
   workflow_call:
+    outputs:
+      name_pdf:
+        description: "The name of pdf"
+        value: ${{ jobs.build.outputs.name_pdf }}
 
 jobs:
   build:
     name: Build the beamer PDF  image
     runs-on: ubuntu-24.04
+    outputs:
+      name_pdf: ${{ steps.nameofpdf.outputs.DEST_PDF }}
     container:
       image : ghcr.io/ichmy55/opencae-slides/texcomp:main
       options: --user 1001:118
@@ -41,10 +47,17 @@ jobs:
       - name: "build PDF"
         run:  make localbuild
       - name: get the pdf name
-        run:  make name >> $GITHUB_ENV
+        id: nameofpdf
+        run:  |
+          make name  >> $GITHUB_OUTPUT
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
           name: dest_pdf
           path: dist/*
           retention-days: 5
+      - name: test
+        run:  |
+          echo qwe6
+          echo ${{ steps.nameofpdf.outputs.DEST_PDF }}
+          echo qwe7
