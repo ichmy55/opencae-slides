@@ -5,14 +5,14 @@ on:
     outputs:
       name_pdf:
         description: "The name of pdf"
-        value: ${{ jobs.build.outputs.job_output1 }}
+        value: ${{ jobs.build.outputs.name_pdf }}
 
 jobs:
   build:
     name: Build the beamer PDF  image
     runs-on: ubuntu-24.04
     outputs:
-      output1: ${{ steps.nameofpdf.outputs.DEST_PDF }}
+      dest_pdf: ${{ steps.nameofpdf.outputs.DEST_PDF }}
     container:
       image : ghcr.io/ichmy55/opencae-slides/texcomp:main
       options: --user 1001:118
@@ -49,15 +49,7 @@ jobs:
       - name: get the pdf name
         id: nameofpdf
         run:  |
-          echo qwe1
           make name  >> $GITHUB_OUTPUT
-          echo qwe2
-          make name
-          echo qwe3
-          cat $GITHUB_OUTPUT
-          echo qwe4
-          echo ${{ steps.nameofpdf.outputs.DEST_PDF }}
-          echo qwe5
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
