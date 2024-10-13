@@ -15,7 +15,7 @@ jobs:
   release_draft:
     runs-on: ubuntu-24.04
     outputs:
-      update_url: ${{ steps.create_release.upload_url }}
+      update_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -33,5 +33,5 @@ jobs:
           echo qwe2
           ls -l
           echo qwe4
-          echo  ${{ steps.create_release.upload_url }}
+          echo  ${{ steps.create_release.outputs.upload_url }}
           echo qwe5
