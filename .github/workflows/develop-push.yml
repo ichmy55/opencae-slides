@@ -14,3 +14,12 @@ jobs:
     uses: ./.github/workflows/testw.yml
     with:
       name_pdf:  ${{ needs.build-pdf.outputs.name_pdf }}
+
+  testw2:
+    needs: [build-pdf]
+    run: |
+      echo qwe1
+      echo ${{ needs.build-pdf.outputs }}
+      echo qwe2
+      echo ${{ needs.build-pdf.outputs.name_pdf }}
+      echo qwe3

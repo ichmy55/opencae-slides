@@ -12,7 +12,7 @@ jobs:
     name: Build the beamer PDF  image
     runs-on: ubuntu-24.04
     outputs:
-      dest_pdf: ${{ steps.nameofpdf.outputs.DEST_PDF }}
+      name_pdf: ${{ steps.nameofpdf.outputs.DEST_PDF }}
     container:
       image : ghcr.io/ichmy55/opencae-slides/texcomp:main
       options: --user 1001:118
