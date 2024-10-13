@@ -54,7 +54,7 @@ jobs:
           echo qwe2
           make name
           echo qwe3
-          echo ${{ steps.nameofpdf.outputs.dest_pdf }}
+          echo ${{ steps.nameofpdf.outputs.DEST_PDF }}
           echo qwe4
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
