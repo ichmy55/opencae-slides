@@ -12,3 +12,5 @@ jobs:
   testw:
     needs: [build-pdf]
     uses: ./.github/workflows/testw.yml
+    with:
+      name_pdf:  ${{ needs.build-pdf.outputs.name_pdf }}
