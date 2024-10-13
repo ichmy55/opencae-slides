@@ -8,8 +8,6 @@ jobs:
     name: Upload the beamer PDF  image to release
     runs-on: ubuntu-24.04
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
       - name: Download the artifact
         uses: actions/download-artifact@v4
         with:
