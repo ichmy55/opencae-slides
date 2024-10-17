@@ -1,6 +1,8 @@
 #
 # Texをコンパイルする環境を作成する Makefile
 #
+.ONESHELL:
+SHELL := /usr/bin/bash
 #
 # ターゲット一覧
 #
@@ -12,6 +14,7 @@
 DOCKER := docker
 DOCKER_IMAGE  := ghcr.io/ichmy55/opencae-slides/texcomp:main
 DOCKER_NAME   := opencae-slides
+PACKAGE_USE   := 0
 #
 # Latex エンジン
 #
@@ -55,10 +58,15 @@ up: ## コンテナを初期化します
 	make down
 	rm -rf ltcache
 	mkdir ltcache
-	@$(DOCKER) build . -t $(DOCKER_NAME)
-	@$(DOCKER) run -d -v $(PWD)/src:/home/ubuntu/src -v $(PWD)/rules:/home/ubuntu/rules  -v$(PWD)/ltcache:/home/ubuntu/.texlive2023 --name $(DOCKER_NAME) $(DOCKER_NAME)
+	if [ $(PACKAGE_USE) -eq 1 ]; then 
+	  $(DOCKER) pull $(DOCKER_IMAGE)
+	  $(DOCKER) run -d -v $(PWD)/src:/home/ubuntu/src -v $(PWD)/rules:/home/ubuntu/rules  -v$(PWD)/ltcache:/home/ubuntu/.texlive2023 --name $(DOCKER_NAME) $(DOCKER_IMAGE)
+	else 
+	  $(DOCKER) build . -t $(DOCKER_NAME)
+	  $(DOCKER) run -d -v $(PWD)/src:/home/ubuntu/src -v $(PWD)/rules:/home/ubuntu/rules  -v$(PWD)/ltcache:/home/ubuntu/.texlive2023 --name $(DOCKER_NAME) $(DOCKER_NAME)
+	fi
 	make remoteclean
-	@$(DOCKER) exec -it $(DOCKER_NAME) luaotfload-tool --update
+	$(DOCKER) exec -it $(DOCKER_NAME) luaotfload-tool --update
 #
 stop: ## コンテナを停止します
 	@$(DOCKER) stop $(DOCKER_NAME)
