@@ -1,27 +1,30 @@
 \begin{frame}{あらためてメッシュ要素について復習}
-  \begin{threeparttable}
-      \caption{３次元構造解析で使われる主なメッシュ要素(一部)＜参考文献\cite{handbook}＞}
-      \vspace{-5mm}
-      \begin{tabular}{|r|c|c|c|} % 表は項目名を右寄せ、データを中寄せ
-          \hline
-          名称       & ４面体２次要素 & ６面体１次要素\tnote{a} & ４面体１次要素 \\
-          \hline
-	      接点配置 \vspace{-0.5mm}   &  \includegraphics[keepaspectratio,height=35mm]{work/images/tet10.png}
-                     & \includegraphics[keepaspectratio]{work/images/hex8.png} 
-                     & \includegraphics[keepaspectratio]{work/images/tet4.png}  \\
-          \hline
-          メリット   & 任意の形状で切れる & 見た目が美しい & 接点数節約 \\
-          \hline
-          デメリット & 多少見た目が悪い   & 形状に人間の介入が必要 & 硬い \\
-          \hline
-          評価       &   〇               & ◎              & × \\
-          \hline
-    \end{tabular}
+  \begin{table}[hbtp]
+    \caption{３次元構造解析で使われる主なメッシュ要素(一部)＜参考文献\cite{handbook}＞}
+    \vspace{-5mm}
+    \begin{NiceTabular}{|r|c|c|c|} % 表は項目名を右寄せ、データを中寄せ
+       \hline
+       名称       & ４面体２次要素 & ６面体１次要素 & ４面体１次要素 \\
+       \midrule
+       接点配置 &  \includegraphics[keepaspectratio,height=35mm]{work/images/tet10.png}
+                & \includegraphics[keepaspectratio]{work/images/hex8.png} 
+                & \includegraphics[keepaspectratio]{work/images/tet4.png}  \\
+       \hline
+       メリット   & 任意の形状で切れる & 見た目が美しい & 接点数節約 \\
+       \hline
+       デメリット & 多少見た目が悪い   & 形状に人間の介入が必要 & 硬い \\
+       \hline
+       評価       &   〇               & ◎              & × \\
+       \hline
+    \end{NiceTabular}
+    %
+    ※ 他に５面体１次要素（６面体１次要素の面が一つ縮退したもの）もある
+    %
     %%% 脚注部 %%%
-    \begin{tablenotes}[para,flushleft,online,normal] %(default:normal)
-      \item[a] 他に５面体１次要素（６面体１次要素の面が一つ縮退したもの）もある
-    \end{tablenotes}
-  \end{threeparttable}
+    %\begin{tablenotes}[para,flushleft,online,normal] %(default:normal)
+    %  \item[a] 他に５面体１次要素（６面体１次要素の面が一つ縮退したもの）もある
+    %\end{tablenotes}
+  \end{table}
   %
   \only<2>{
     % TiKZを使った図形の描画 使用禁止札
