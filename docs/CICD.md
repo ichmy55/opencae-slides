@@ -23,17 +23,18 @@
 |                        |                                                   | 起動元           |         |           |
 | :--------------------- | :------------------------------------------------ | :--------------: | :-----: | :-------: |
 | ファイル名             | 内容                                              | develop-<br>push | main-pr | main-push | 
-| build-pdf.yml          | PDFファイルをbuildします                          |  〇              |         |           |
+| build-pdf.yml          | PDFファイルをbuildします                          |  〇              |         | 〇        |
 | textlint-reviewdog.yml | textlint実施し、問題があればPRにコメントを加えます|                  |  〇     |           |
-| release-drafter.yml    | リリースを作成し、バージョンを更新します          |                  |         | 〇        |
 | package-textcomp.yml   | PDFファイルのbuild用のDocker imageを生成します    |                  |         | (※注1)    |
-
+| release-drafter.yml    | リリースを作成し、バージョンを更新します          |                  |         | 〇        |
+| release-update.yml     | 上記リリースにPDFファイルを追記します             |                  |         | 〇        |
 (※注1)：PDFファイルのbuild用のDockerfileが変更されたときのみ走ります.  
 
 (3) 設定ファイル  
 上記実施に必要な設定ファイルは,以下に記載しています.  
 | ファイル名           | 内容                          | 
 | :------------------- | :---------------------------- |
+| dependabot.yml       | dependabot用設定ファイル      |
 | release-drafter.yml  | release-drafter用設定ファイル |
 
 (4) スクリプトファイル  

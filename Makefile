@@ -2,11 +2,10 @@
 # Texをコンパイルする環境を作成する Makefile
 #
 .ONESHELL:
-SHELL := /usr/bin/bash
 #
 # ターゲット一覧
 #
-.PHONY: help up ps stop down  clean build bash localbuild localclean localup localtest local-lint
+.PHONY: help up up-package stop down ps bash build lint clean remotebuild remotelint remoteclean localbuild local-lint localclean distclean name localup
 .DEFAULT_GOAL := help
 #
 # Docker コマンドマクロ
@@ -14,7 +13,7 @@ SHELL := /usr/bin/bash
 DOCKER := docker
 DOCKER_IMAGE  := ghcr.io/ichmy55/opencae-slides/texcomp:main
 DOCKER_NAME   := opencae-slides
-PACKAGE_USE   := 0
+PACKAGE_USE   := 0              # 標準では出来合いパッケージを使用せず、自前でDockerイメージを作る
 #
 # Latex エンジン
 #
@@ -67,6 +66,10 @@ up: ## コンテナを初期化します
 	fi
 	make remoteclean
 	$(DOCKER) exec -it $(DOCKER_NAME) luaotfload-tool --update
+#
+up-package: ## コンテナを初期化します（出来合いのパッケージを使います）
+	PACKAGE_USE   := 1
+	make up
 #
 stop: ## コンテナを停止します
 	@$(DOCKER) stop $(DOCKER_NAME)
