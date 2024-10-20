@@ -28,6 +28,7 @@
 | package-textcomp.yml   | PDFファイルのbuild用のDocker imageを生成します    |                  |         | (※注1)    |
 | release-drafter.yml    | リリースを作成し、バージョンを更新します          |                  |         | 〇        |
 | release-update.yml     | 上記リリースにPDFファイルを追記します             |                  |         | 〇        |
+
 (※注1)：PDFファイルのbuild用のDockerfileが変更されたときのみ走ります.  
 
 (3) 設定ファイル  
