@@ -5,7 +5,7 @@
 #
 # ターゲット一覧
 #
-.PHONY: help up up-package stop down ps bash build lint clean remotebuild remotelint remoteclean localbuild local-lint localclean distclean name localup
+.PHONY: help up up-package stop down ps bash build lint clean remotebuild remotelint remoteclean localbuild local-lint localclean distclean name localup diff
 .DEFAULT_GOAL := help
 #
 # Docker コマンドマクロ
@@ -13,7 +13,7 @@
 DOCKER := docker
 DOCKER_IMAGE  := ghcr.io/ichmy55/opencae-slides/texcomp:main
 DOCKER_NAME   := opencae-slides
-PACKAGE_USE   := 0              # 標準では出来合いパッケージを使用せず、自前でDockerイメージを作る
+PACKAGE_USE   := 1              # 標準では出来合いパッケージを使用せず、自前でDockerイメージを作る
 #
 # Latex エンジン
 #
@@ -27,18 +27,14 @@ DEST_PDF := opencae-kantou-s-028
 #
 SRCDIR := src/$(DEST_PDF)
 SRCS   := $(wildcard  $(SRCDIR)/*.tex)
-SRCS2  := $(SRCS) $(wildcard src/images/*)
+SRCS2  := $(wildcard  $(SRCDIR)/images/*)
+SRCS3  := $(SRCS) $(SRCS2)
 DOCS   := $(wildcard  docs/*.md)
 
 #
-# Latex コンパイル方法の定義マクロ
+# Makefile内で使用するshellを定義
 #
-define F2
-$(2): $(1)
-	@$(LATEXENG)$(1)
-	mv main.pdf $(2)
-	rm -f main.*
-endef
+SHELL=/bin/bash
 
 #
 help: ## ヘルプを表示する
@@ -135,7 +131,7 @@ localbuild: pdf-files ## ローカル環境下でlatex→pdfにコンパイル�
 
 pdf-files: $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF)))
 
-$(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS2)
+$(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS3)
 	make localclean
 	make localup
 	@$(LATEXENG) work/000-main.tex
