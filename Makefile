@@ -134,9 +134,10 @@ pdf-files: $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF)))
 $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS3)
 	make localclean
 	make localup
-	@$(LATEXENG) work/000-main.tex
-	mv 000-main.pdf $@
-	rm -f 000-main.*
+	cd work
+	@$(LATEXENG) 000-main.tex
+	mv 000-main.pdf ../$@
+	cd ..
 
 local-lint: ## ローカル環境下でlatexをlintにかけます
 	npx textlint -f pretty-error README.md $(SRCS) $(DOCS)
