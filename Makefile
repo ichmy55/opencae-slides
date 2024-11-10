@@ -17,7 +17,8 @@ PACKAGE_USE   := 1              # 標準では出来合いパッケージを使�
 #
 # Latex エンジン
 #
-LATEXENG := latexmk -lualatex
+LATEXENG :=  lualatex
+BIBTEXENG := pbibtex
 #
 # 作成するスライド名
 #
@@ -26,7 +27,7 @@ DEST_PDF := opencae-kantou-s-028
 # ソースファイル一覧
 #
 SRCDIR := src/$(DEST_PDF)
-SRCS   := $(wildcard  $(SRCDIR)/*.tex)
+SRCS   := $(wildcard  $(SRCDIR)/*.tex)  $(wildcard  $(SRCDIR)/*.bst)  $(wildcard  $(SRCDIR)/*.bib)
 SRCS2  := $(wildcard  $(SRCDIR)/images/*)
 SRCS3  := $(SRCS) $(SRCS2)
 DOCS   := $(wildcard  docs/*.md)
@@ -135,7 +136,10 @@ $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS3)
 	make localclean
 	make localup
 	cd work
-	@$(LATEXENG) 000-main.tex
+	@$(LATEXENG)  000-main.tex
+	@$(BIBTEXENG) 000-main
+	@$(LATEXENG)  000-main.tex
+	@$(LATEXENG)  000-main.tex
 	mv 000-main.pdf ../$@
 	cd ..
 
