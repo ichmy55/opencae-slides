@@ -1,0 +1,24 @@
+\begin{frame}{今回使用するソフトと選定理由}
+ \begin{table}[hbtp]
+    \caption{今回使用するソフト}
+    \begin{NiceTabular}{|c|c|c|c|c|c|} % 表は項目名を右寄せ、データを中寄せ
+       \hline
+	    用途     &  形状作成    & メッシュ切 & プリ & ソルバー & ポスト \\
+       \hline
+	    表で動作 &  gmsh        & \multicolumn{4}{|c|}{PrePoMax} \\
+       \hline
+	    内部動作 &  OpenCascade & gmsh       & PrePoMax  & Calculix & VTK \\
+       \hline
+    \end{NiceTabular}
+  \end{table}
+  \begin{itemize}
+     \item[①] gmsh/opencascade ：\\
+              マルチブロックをまとめて一つのグループとして扱い \\
+              ブロック間のメッシュの割れを防ぐ機能がある \\
+              作成経過がスクリプト化され、形状の公開／後日の検証がしやすい
+     \item[②] PrePoMax ：
+              とっつきやすそう
+     \item[③] Calculix ：
+              上記の同梱だから
+  \end{itemize}
+\end{frame}
