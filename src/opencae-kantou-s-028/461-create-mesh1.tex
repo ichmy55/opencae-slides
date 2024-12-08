@@ -4,12 +4,16 @@
     \begin{column}{0.6\textwidth}
       ＜今回のメッシュ切設定の概要＞
       \begin{itemize}
-        \item[(1)]<1-> 全体のメッシュサイズを4mmに設定
-        \item[(2)]<2-> 全体のメッシュを「TransFinite」に設定
-	\item[(3)]<3-> 厚み方向のメッシュサイズを1mm(20分割)
-		       に設定
-        \item[(4)]<4-> メッシュ作成！
-        \item[(5)]<5-> 板厚方向のメッシュが全立体に伝搬する
+        \item[(1)]<1-> Mesh→Mesh Setup Item→Createとし
+                       Meshing Parametersを選択 \\
+                       全体のメッシュサイズを4mmに設定
+	\item[(2)]<2-> 今回は1次のメッシュを切るので「Second order」はNo
+        \item[(3)]<3-> Mesh→Mesh Setup Item→Createとし
+                       TransFinite Meshを選択 \\
+		       全体のメッシュを「TransFinite」に設定
+        \item[(4)]<4-> Mesh→Mesh Setup Item→Createとし
+                       Mesh Refinementを選択 \\
+	               厚み方向のメッシュサイズを1mmに設定
       \end{itemize}
     \end{column}
     \begin{column}{0.4\textwidth}
@@ -17,9 +21,9 @@
       \begin{figure}[htbp]
         \begin{center}
           \begin{overlayarea}{7cm}{15cm}
-            \only<1>{\includegraphics[keepaspectratio,scale=0.30]{images/sc4.png}}
-            \only<2>{\includegraphics[keepaspectratio,scale=0.30]{images/sc5.png}}
-            \only<3->{\includegraphics[keepaspectratio,scale=0.30]{images/sc6.png}}
+            \only<1-2>{\includegraphics[keepaspectratio,scale=0.30]{images/sc7.png}}
+            \only<3>{\includegraphics[keepaspectratio,scale=0.30]{images/sc8.png}}
+            \only<4->{\includegraphics[keepaspectratio,scale=0.30]{images/sc9.png}}
             \caption{メッシュ設定の概要}
           \end{overlayarea}
         \end{center}
@@ -27,18 +31,27 @@
     \end{column}
   \end{columns}
   \only<1>{
-    \begin{textblock*}{140pt}(210pt,60pt)
+    \begin{textblock*}{160pt}(200pt,73pt)
       \begin{tikzpicture}
-         \node[rectangle,fill=cud_yellow,text width=70pt,text centered,rounded corners,minimum height=40pt](s) at (1cm,1cm) { \scriptsize ７つの立体が\\取り込まれる};
-         \draw[->, draw=cud_red, line width=1pt] (10pt,50pt) -- (30pt,110pt);
+         \node[rectangle,fill=cud_yellow,text width=90pt,text centered,rounded corners,minimum height=40pt](s) at (1cm,1cm) { \scriptsize 全体のメッシュ\\サイズを4mmに設定};
+         \draw[->, draw=cud_red, line width=1pt] (10pt,50pt) -- (80pt,100pt);
       \end{tikzpicture}
     \end{textblock*}
   }
-  \only<3>{
-    \begin{textblock*}{100pt}(210pt,90pt)
+  \only<2>{
+    \begin{textblock*}{160pt}(200pt,90pt)
       \begin{tikzpicture}
-         \node[rectangle,fill=cud_yellow,text width=70pt,text centered,rounded corners,minimum height=40pt](s) at (1cm,1cm) { \scriptsize ひとかたまりの\\形状となる};
-         \draw[->, draw=cud_red, line width=1pt] (20pt,50pt) -- (40pt,130pt);
+         \node[rectangle,fill=cud_yellow,text width=90pt,text centered,rounded corners,minimum height=40pt](s) at (1cm,1cm) { \scriptsize Second Order\\は No};
+         \draw[->, draw=cud_red, line width=1pt] (10pt,50pt) -- (80pt,76pt);
+      \end{tikzpicture}
+    \end{textblock*}
+  }
+  \only<4>{
+    \begin{textblock*}{100pt}(248pt,65pt)
+      \begin{tikzpicture}
+	      \node[rectangle,fill=cud_yellow,text width=70pt,text centered,rounded corners,minimum height=40pt](s) at (1cm,1cm) { \scriptsize この線を\\1mm(20分割)};
+         \draw[->, draw=cud_red, line width=1pt] (20pt,50pt) -- (40pt,180pt);
+         \draw[->, draw=cud_red, line width=1pt] (20pt,50pt) -- (37pt,70pt);
       \end{tikzpicture}
     \end{textblock*}
   }
