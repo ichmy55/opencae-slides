@@ -2661,6 +2661,7 @@ FUNCTION {format.url}
         cap.yes 'status.cap :=
         name.url.prefix " " *
         "\url{" * url * "}" *
+        " Last visited:{" * urldate * "}" *
         punct.no 'this.status.punct :=
         punct.period 'prev.status.punct :=
         space.normal 'this.status.space :=
@@ -2903,7 +2904,7 @@ FUNCTION {misc}
   format.authors output
   name.or.dash
   format.article.title output
-  format.howpublished "howpublished" bibinfo.check output 
+  format.howpublished "howpublished" bibinfo.check output
   format.organization "organization" bibinfo.check output
   format.address "address" bibinfo.check output
   format.pages output

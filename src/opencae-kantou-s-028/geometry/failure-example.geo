@@ -2,8 +2,8 @@
 // オープンCAE勉強会@関東（構造など）　での報告用の形状
 //
 //     報告者： ichmy55
-//     報告日： 2024年9月21日
-//     報告　： 第97回オープンCAE勉強会@関東（構造など）
+//     報告日： 2024年12月14日
+//     報告　： 第28回オープンCAE勉強会@関東（構造など）
 //
 //     形状名： failure-example.geo
 //     概要　： ６面体では切れない形状の例
@@ -122,8 +122,4 @@ v16 = newv;  BooleanDifference(v16) = {Volume{v15}; Delete;}{Volume{v12};};
 //
 v17 = newv;  BooleanIntersection(v17) = {Volume{v6};Delete;}{Volume{v11};Delete;};
 v18 = newv;  BooleanIntersection(v18) = {Volume{v17};Delete;}{Volume{v12};Delete;};
-//
-// すべてのソリッドを地続きに指定
-//
-HealShapes;
-Coherence;
+Recursive Delete {  Volume{v12}; }

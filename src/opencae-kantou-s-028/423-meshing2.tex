@@ -1,22 +1,27 @@
-\begin{frame}{6面体要素が切れる形状の条件}
-  \begin{table}[hbtp]
-      \caption{３次元構造解析で使われる主なメッシュ要素(一部)＜参考文献\cite{handbook}＞}
-      \vspace{-5mm}
-      \begin{tabular}{|r|c|c|c|} % 表は項目名を右寄せ、データを中寄せ
-          \hline
-          名称       & ４面体２次要素 & ６面体１次要素 & ４面体１次要素 \\
-          \hline
-          接点配置   & \includegraphics[keepaspectratio]{images/tet10.png}
-                     & \includegraphics[keepaspectratio]{images/hex8.png} 
-                     & \includegraphics[keepaspectratio]{images/tet4.png}  \\
-          \hline
-          メリット   & 任意の形状で切れる & 見た目が美しい & 無 \\
-          \hline
-          デメリット & 多少見た目が悪い   & 形状に人間の介入が必要 & 硬い \\
-          \hline
-          評価       &   〇               & ◎              & × \\
-          \hline
-    \end{tabular}
+\begin{frame}{改めて6面体要素の切り方について復習}
+ \begin{table}[hbtp]
+    \caption{6面体要素の切り方の例}
+    \vspace{-5mm}
+    \begin{NiceTabular}{|r|c|c|c|} % 表は項目名を右寄せ、データを中寄せ
+       \hline
+       名称       &  TransFinite法 & 押し出し法 &  スクリプト法 \\
+       \midrule
+       概要   & \begin{tabular}{c}形状をレンガ状に分割\\それぞれ構造格子\\を作る（曲面可)\end{tabular}
+              & \begin{tabular}{c}平面メッシュを\\特定の方向に\\押し出す（曲線可）\end{tabular}
+	      & \begin{tabular}{c}スクリプトで\\作成\\(特殊用途向け)\end{tabular} \\
+       \hline
+       概念図 & \includegraphics[keepaspectratio,height=15mm]{images/MappedCylinder.png}
+              & \includegraphics[keepaspectratio,height=15mm]{images/sweep.png}
+              & \includegraphics[keepaspectratio,height=15mm]{images/screw.png} \\
+       \hline
+       参考   & Wikipedia\cite{wiki}
+	      & PrePoMax掲示板\cite{PrePoMax-news}
+	      & ネジ解析の教科書\cite{fukuoka}\\
+       \hline
+       注意点 & \begin{tabular}{c}マルチブロック必須\\隣接ブロックと面を\\共有していないと割れ\end{tabular}
+	      & 隣接との整合難
+	      & アルゴリズム作成難 \\
+       \hline
+    \end{NiceTabular}
   \end{table}
-  %
 \end{frame}

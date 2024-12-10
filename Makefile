@@ -17,7 +17,7 @@ PACKAGE_USE   := 1              # 標準では出来合いパッケージを使�
 #
 # Latex エンジン
 #
-LATEXENG :=  lualatex
+LATEXENG := lualatex
 BIBTEXENG := pbibtex
 #
 # 作成するスライド名
