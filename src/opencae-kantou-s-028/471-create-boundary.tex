@@ -5,7 +5,7 @@
       \begin{itemize}
         \item[(1)]<1-> 1/8ショートケーキモデルの \\
                        各対称面を拘束 
-        \item[(2)]<2-> つづいて面圧を設定
+        \item[(2)]<2-> 続いて面圧を設定
       \end{itemize}
     \end{column}
     \begin{column}{0.4\textwidth}
@@ -22,18 +22,23 @@
     \end{column}
   \end{columns}
   \only<1>{
-    \begin{textblock*}{160pt}(200pt,73pt)
+    \begin{textblock*}{160pt}(180pt,103pt)
       \begin{tikzpicture}
-         \node[rectangle,fill=cud_yellow,text width=90pt,text centered,rounded corners,minimum height=40pt](s) at (1cm,1cm) { \scriptsize 全体のメッシュ\\サイズを4mmに設定};
-         \draw[->, draw=cud_red, line width=1pt] (10pt,50pt) -- (80pt,100pt);
+         \node[rectangle,fill=cud_yellow,text width=90pt,text centered,rounded corners,minimum height=20pt](s) at (1cm,3.0cm) { \scriptsize ｘ方向固定};
+         \draw[->, draw=cud_red, line width=1pt] (75pt,95pt) -- (125pt,130pt);
+         \node[rectangle,fill=cud_yellow,text width=90pt,text centered,rounded corners,minimum height=20pt](s) at (2cm,1.2cm) { \scriptsize ｙ方向固定};
+         \draw[->, draw=cud_red, line width=1pt] (105pt,35pt) -- (125pt,40pt);
+         \node[rectangle,fill=cud_yellow,text width=90pt,text centered,rounded corners,minimum height=20pt](s) at (7cm,0.0cm) { \scriptsize ｚ方向固定};
+         \draw[->, draw=cud_red, line width=1pt] (230pt,10pt) -- (225pt,90pt);
       \end{tikzpicture}
     \end{textblock*}
   }
 	  \only<2>{
     \begin{textblock*}{160pt}(195pt,75pt)
       \begin{tikzpicture}
-         \node[rectangle,fill=cud_yellow,text width=90pt,text centered,rounded corners,minimum height=40pt](s) at (1cm,1cm) { \scriptsize Second Order\\は No};
-         \draw[->, draw=cud_red, line width=1pt] (10pt,50pt) -- (80pt,76pt);
+         \node[rectangle,fill=cud_yellow,text width=90pt,text centered,rounded corners,minimum height=40pt](s) at (1cm,0cm) { \scriptsize 面圧10MPa};
+         \draw[->, draw=cud_red, line width=1pt] (10pt,20pt) -- (78pt,100pt);
+         \draw[->, draw=cud_red, line width=1pt] (76pt,20pt) -- (130pt,30pt);
       \end{tikzpicture}
     \end{textblock*}
   }
