@@ -11,18 +11,18 @@
 # Docker コマンドマクロ
 #
 DOCKER := docker
-DOCKER_IMAGE  := ghcr.io/ichmy55/opencae-slides/texcomp:main
-DOCKER_NAME   := opencae-slides
-PACKAGE_USE   := 1              # 標準では出来合いパッケージを使用せず、自前でDockerイメージを作る
 #
 # Latex エンジン
 #
 LATEXENG := lualatex
 BIBTEXENG := pbibtex
+# 
+# Makefileのファイル名
+HELPFILE := $(MAKEFILE_LIST)
 #
-# 作成するスライド名
+# プロジェクト毎設定の読み込み
 #
-DEST_PDF := opencae-kantou-s-028
+include variables.mk
 #
 # ソースファイル一覧
 #
@@ -31,21 +31,14 @@ SRCS   := $(wildcard  $(SRCDIR)/*.tex)  $(wildcard  $(SRCDIR)/*.bst)  $(wildcard
 SRCS2  := $(wildcard  $(SRCDIR)/images/*)
 SRCS3  := $(SRCS) $(SRCS2)
 DOCS   := $(wildcard  docs/*.md)
-
 #
 # Makefile内で使用するshellを定義
-#
 SHELL=/bin/bash
-
 #
 help: ## ヘルプを表示する
-	@echo "Example operations by makefile."
-	@echo ""
-	@echo "Usage: make SUB_COMMAND argument_name=argument_value"
-	@echo ""
 	@echo "Command list:"
 	@echo ""
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(HELPFILE) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 #
 # Docker compose 制御ターゲット
@@ -121,6 +114,7 @@ remotelint: ## コンテナ環境にてlatexをLintにかけます
 remoteclean: ## コンテナ上のデータ整理（いったん全部消して、ローカルから持上）
 	make localclean
 	@$(DOCKER) cp ./Makefile  $(DOCKER_NAME):/home/ubuntu/
+	@$(DOCKER) cp ./variables.mk  $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp README.md $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp .textlintrc.json $(DOCKER_NAME):/home/ubuntu/
 	@$(DOCKER) cp VERSION.txt $(DOCKER_NAME):/home/ubuntu/
@@ -131,7 +125,6 @@ remoteclean: ## コンテナ上のデータ整理（いったん全部消して�
 localbuild: pdf-files ## ローカル環境下でlatex→pdfにコンパイルします
 
 pdf-files: $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF)))
-
 $(addprefix dist/,$(addsuffix .pdf,$(DEST_PDF))) : $(SRCS3)
 	make localclean
 	make localup
