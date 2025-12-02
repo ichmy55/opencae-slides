@@ -7,7 +7,7 @@ ENV TZ=Asia/Tokyo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 #
-# 必要なパッケージをインストールします.
+# 必要なパッケージをインストールします
 #
 RUN apt update
 RUN apt -y upgrade
