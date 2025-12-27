@@ -22,7 +22,7 @@ Windowsなど,ほかのOSの場合は仮想環境でUbuntu環境を用意して�
 sumoduleを使っているので“--recursive"を忘れずにつけてください.
 
 ```
-$ git clone --recursive 1https://github.com/ichmy55/opencae-slides.git
+$ git clone --recursive https://github.com/ichmy55/opencae-slides.git
 ```
 
 ## Directory tree
