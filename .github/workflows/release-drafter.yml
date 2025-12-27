@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          submodule: recursive
       - name: create_release
         id:   create_release
         uses: release-drafter/release-drafter@v6

@@ -11,9 +11,6 @@ permissions:
   pull-requests: write
 
 jobs:
-  package-textcomp:
-    uses: ./.github/workflows/package-textcomp.yml
-
   release-drafter:
     needs: [package-textcomp]
     uses: ./.github/workflows/release-drafter.yml
