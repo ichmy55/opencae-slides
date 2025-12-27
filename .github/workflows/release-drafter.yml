@@ -20,7 +20,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
         with:
-          submodule: recursive
+          submodules: 'recursive'
       - name: create_release
         id:   create_release
         uses: release-drafter/release-drafter@v6

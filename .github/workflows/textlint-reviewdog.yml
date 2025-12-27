@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodule: recursive
+          submodules: 'recursive'
 
       # Setup Node.js
       - name: Setup Node.js
