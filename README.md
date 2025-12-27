@@ -19,9 +19,10 @@ Windowsなど,ほかのOSの場合は仮想環境でUbuntu環境を用意して�
 
 ## Installation
 適当な作業ディレクトリを作成し,本ソースをcloneしてください.
+sumoduleを使っているので“--recursive"を忘れずにつけてください.
 
 ```
-$ git clone https://github.com/ichmy55/opencae-slides.git
+$ git clone --recursive 1https://github.com/ichmy55/opencae-slides.git
 ```
 
 ## Directory tree
