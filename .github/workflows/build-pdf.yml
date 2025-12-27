@@ -14,11 +14,13 @@ jobs:
     outputs:
       name_pdf: ${{ steps.nameofpdf.outputs.DEST_PDF }}
     container:
-      image : ghcr.io/ichmy55/opencae-slides/texcomp:main
+      image : ghcr.io/ichmy55/beamer-example/texcomp:main
       options: --user 1001:118
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          submodule: recursive
       - name: Get latest release tag
         id: get_tag
         uses: actions/github-script@v7

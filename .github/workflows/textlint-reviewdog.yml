@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodule: recursive
 
       # Setup Node.js
       - name: Setup Node.js
