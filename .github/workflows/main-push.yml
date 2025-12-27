@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   release-drafter:
-    needs: [package-textcomp]
     uses: ./.github/workflows/release-drafter.yml
 
   build-pdf:
