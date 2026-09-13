@@ -1,56 +1,38 @@
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
 categories:
-  - title: ":rocket: Features"
-    labels:
-      - 'Feature'
-  - title: ":+1: Adding Pages"
-    labels:
-      - 'Page'
-  - title: ":memo: Wording correction"
-    labels:
-      - 'Correction'
-  - title: ":bug: Bug Fixes"
-    labels:
-      - bug
-  - title: ":fire: Remove"
-    labels:
-      - 'Remove'
-  - title: ":recycle: Refactoring"
-    labels:
-      - 'Refactoring'
-  - title: ":white_check_mark: Testing"
-    labels:
-      - 'Testing'
+  - title: ":boom: 破壊的更新"
+    semver-increment: "major"
+    when:
+      label: ":boom: 破壊的更新"
+  - title: ":sparkles: 機能追加"
+    semver-increment: "minor"
+    when:
+      label: ":sparkles: 機能追加"
+  - title: ":adhesive_bandage: 小修整"
+    semver-increment: "patch"
+    when:
+      label: ":adhesive_bandage: 小修整"
+  - title: ":bug: ソフトの不具合"
+    semver-increment: "patch"
+    when:
+      label: ":bug: ソフトの不具合"
+  - title: ":recycle:リファクタリング"
+    semver-increment: "patch"
+    when:
+      label: ":recycle:リファクタリング"
   - title: ":green_heart: CI/CD"
-    labels:
-      - 'CI/CD'
-  - title: ":up: Dependencies"
-    labels:
-      - 'Dependencies'
-  - title: ":cop: Security"
-    labels:
-      - 'Security'
-  - title: ":gear: Development"
-    labels:
-      - 'Development'
-  - title: ":book: Documentation"
-    labels:
-      - documentation
-  - title: Other Changes
-    labels:
-      - "*"
-version-resolver:
-  major:
-    labels:
-      - 'major'
-  minor:
-    labels:
-      - 'minor'
-  patch:
-    labels:
-      - 'patch'
-  default: "patch"
+    semver-increment: "patch"
+    when:
+      label: ":green_heart: CI/CD"
+  - title: ":book:ドキュメント"
+    semver-increment: "patch"
+    when:
+      label: ":book:ドキュメント"
+  - title: ":wrench:その他"
+    semver-increment: "patch"
+    when:
+      label: "*"
 
 template: |
   ## Changes

@@ -3,9 +3,12 @@ name: Release Drafter
 on:
   workflow_call:
     outputs:
-      update_url:
-        description: "Update URL of pdf"
-        value: ${{ jobs.release_draft.outputs.update_url }}
+      release_id:
+        description: "ID of release"
+        value: ${{ jobs.release_draft.outputs.release_id }}
+      tag_name:
+        description: "tag name"
+        value: ${{ jobs.release_draft.outputs.tag_name }}
 
 permissions:
   contents: write
@@ -13,17 +16,18 @@ permissions:
 
 jobs:
   release_draft:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
-      update_url: ${{ steps.create_release.outputs.upload_url }}
+      release_id: ${{ steps.create_release.outputs.id }}
+      tag_name:   ${{ steps.create_release.outputs.tag_name }}
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
-          submodules: 'recursive'
+          submodules: recursive
       - name: create_release
         id:   create_release
-        uses: release-drafter/release-drafter@v6
+        uses: release-drafter/release-drafter@v7
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:

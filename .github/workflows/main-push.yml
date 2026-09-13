@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  packages: write
   pull-requests: write
 
 jobs:
@@ -22,5 +21,6 @@ jobs:
     needs: [release-drafter,build-pdf]
     uses: ./.github/workflows/release-update.yml
     with:
-      upload_url:  ${{ needs.release-drafter.outputs.update_url }}
+      release_id:  ${{ needs.release-drafter.outputs.release_id }}
+      tag_name:    ${{ needs.release-drafter.outputs.tag_name }}
       name_pdf:    ${{ needs.build-pdf.outputs.name_pdf }}

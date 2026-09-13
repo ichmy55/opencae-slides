@@ -1,9 +1,9 @@
-name: main-pull request
+name: develop pull request
 
 on:
   pull_request:
     branches:
-      - main
+      - development
 
 permissions:
   contents: read
@@ -18,4 +18,5 @@ jobs:
     uses: ./.github/workflows/checkmake-action.yml
 
   textlint-reviewdog:
+    needs: [actionlint-reviewdog]
     uses: ./.github/workflows/textlint-reviewdog.yml
