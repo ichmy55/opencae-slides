@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     name: Build the beamer PDF  image
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       name_pdf: ${{ steps.nameofpdf.outputs.DEST_PDF }}
     container:
@@ -18,12 +18,12 @@ jobs:
       options: --user 1001:118
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
-          submodules: 'recursive'
+          submodules: true
       - name: Get latest release tag
         id: get_tag
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -44,16 +44,17 @@ jobs:
       - name: "Overwrite the VERSION.txt"
         env:
           RESULT: '${{ steps.get_tag.outputs.result }}'
-        run: echo $RESULT > VERSION.txt
+        run: echo "$RESULT" > VERSION.txt
 
       - name: "build PDF"
         run:  make localbuild
+
       - name: get the pdf name
         id: nameofpdf
-        run:  |
-          make name  >> $GITHUB_OUTPUT
+        run:  make name  >> "$GITHUB_OUTPUT"
+
       - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dest_pdf
           path: dist/*
