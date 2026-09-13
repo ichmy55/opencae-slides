@@ -7,8 +7,12 @@ on:
         description: Name of the pdf
         required: true
         type: string
-      upload_url:
-        description: Upload url of the pdf
+      release_id:
+        description: Upload id of the pdf
+        required: true
+        type: string
+      tag_name:
+        description: tag of the pdf
         required: true
         type: string
 
@@ -18,18 +22,18 @@ permissions:
 
 jobs:
   update_release_draft:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - name: Download the artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: dest_pdf
       - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: svenstaro/upload-release-action@v2
         with:
-          upload_url: ${{ inputs.upload_url }}
-          asset_path: ./${{ inputs.name_pdf }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ inputs.name_pdf }}
           asset_name: ${{ inputs.name_pdf }}
-          asset_content_type: application/pdf
+          tag:        ${{ inputs.tag_name }}
+          release_id: ${{ inputs.release_id }}
+          overwrite: true
