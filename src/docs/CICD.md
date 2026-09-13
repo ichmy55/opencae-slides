@@ -2,8 +2,8 @@
 本リポジトリでは、以下３段階のブランチを使用しています
 | No | 名称 | 概要 |
 | ---- | ---- | ---- |
-|(1)|feature-＊| 新機能開発中に使うブランチ|
-|(2)|development| 開発用ブランチでいつでもPUSH可能|
+|(1)|#(issue番号)-(issue名)| issue毎に使うブランチ|
+|(2)|development| 開発用ブランチ、各issueを統合する|
 |(3)|main| 上記ブランチで問題ないことを確認の上PR。直接PUSH禁止|
 
 ## CI/CD
@@ -21,16 +21,16 @@
 
 (2) 実施内容設定ファイル  
 具体的な実施内容は,以下ファイルに記載しています.  
-|                        |                                                   | 起動元           |         |           |
-| :--------------------- | :------------------------------------------------ | :--------------: | :-----: | :-------: |
-| ファイル名             | 内容                                              | develop-<br>push | main-pr | main-push | 
-| build-pdf.yml          | PDFファイルをbuildします                          |  〇              |         | 〇        |
-| actionlint-reviewdog.yml | actionlint実施し、問題があればPRにコメントを加えます|   〇     |                 |  〇     |           |
-| hadolint-reviewdog.yml   | hadolint実施し、問題があればPRにコメントを加えます  |   〇     |                 |  〇     |           |
-| checkmake-action.yml     | checkmakeを実施します                               |   〇     |                 |  〇     |           |
-| textlint-reviewdog.yml | textlint実施し、問題があればPRにコメントを加えます|                  |  〇     |           |
-| release-drafter.yml    | リリースを作成し、バージョンを更新します          |                  |         | 〇        |
-| release-update.yml     | 上記リリースにPDFファイルを追記します             |                  |         | 〇        |
+|                          |                                                     | 起動元           |         |           |
+| :----------------------- | :-------------------------------------------------- | :--------: | :---------------:|:-----: | :-------: |
+| ファイル名               | 内容                                                | develop-pr | develop-<br>push | main-pr | main-push | 
+| build-pdf.yml            | PDFファイルをbuildします                            |            |  〇              |         | 〇        |
+| actionlint-reviewdog.yml | actionlint実施し、問題があればPRにコメントを加えます|   〇       |                 |  〇     |           |
+| hadolint-reviewdog.yml   | hadolint実施し、問題があればPRにコメントを加えます  |   〇       |                 |  〇     |           |
+| checkmake-action.yml     | checkmakeを実施します                               |   〇       |                 |  〇     |           |
+| textlint-reviewdog.yml   | textlint実施し、問題があればPRにコメントを加えます  |   〇       |                 |  〇     |           |
+| release-drafter.yml      | リリースを作成し、バージョンを更新します            |            |                 |         | 〇        |
+| release-update.yml       | 上記リリースにPDFファイルを追記します               |            |                 |         | 〇        |
 
 (3) 設定ファイル  
 上記実施に必要な設定ファイルは,以下に記載しています.  
