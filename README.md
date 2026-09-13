@@ -1,4 +1,8 @@
 # opencae-slides
+[![Build Status](https://github.com/ichmy55/beamer-example/actions/workflows/main-push.yml/badge.svg)](https://github.com/ichmy55/beamer-example/actions)
+[![GitHub release](https://img.shields.io/github/release/ichmy55/beamer-example.svg)](https://GitHub.com/ichmy55/cbeamer-example/releases/)
+[![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
+[![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
 ## Overview
 OpenCAE学会の各後援勉強会などにて報告する際のスライドのTexソースを公開するためのリポジトリです.
@@ -30,17 +34,20 @@ $ git clone --recursive https://github.com/ichmy55/opencae-slides.git
 <pre>
 .
 ├── README.md.................説明書
-├── Makefile..................Texコンパイル方法を記載したレシピファイル.
-├── Dockerfile................Texコンパイル用のDockerイメージのレシピ.
+├── Makefile..................Texコンパイル方法を記載したレシピファイル(※下記src/commons1に実体があります)
+├── variables.mk..............Makefileの(各プロジェクト毎の差分を示した)設定ファイル
+├── Dockerfile................Texコンパイル用のDockerイメージのレシピ(※下記src/commons1に実体があります)
 ├── .github
+│   │.........................GitHubでのCI/CO設定ファイル.
 │   ├── script................reviewdog用スクリプト
 │   └── workflow..............GitHubでのCI/CO設定ファイル.
 ├── .textlintrc.json..........自動校正textlint用ルールファイル.
-├── rules ....................自動校正prh用辞書ファイル.
-├── docs .....................本リポジトリの説明書
 ├── package-lock.json ........reviewdog 実行用ダミー(無視/放置ください).
 │    
-├── src ......................このディレクトリにTexのソースファイルを配置します.
+├── src
+│   ├── commons1..............他のプロジェクトでも共通で使うファイルを切り出しています
+│   ├── commons2..............他のプロジェクトでも共通で使うファイルを切り出しています
+│   ├─  docs .................本リポジトリの説明書
 │   ├── opencae-kantou-s-025..ソースは勉強会毎のディレクトリにそれぞれ入れます.
 │   └── opencae-kantou-s-028..ソースは勉強会毎のディレクトリにそれぞれ入れます.
 │         ├── geometry .......使用する形状ファイルを入れます.
@@ -48,8 +55,7 @@ $ git clone --recursive https://github.com/ichmy55/opencae-slides.git
 │    
 ├── dist......................このディレクトリに結果pdfが生成されます.Make時に生成されます.
 ├── work......................ワーク用です.Make時に生成されます.
-└── ltcache...................Latexのフォントキャッシュ用です.コンテナUp時に生成されます.(ローカル環境時)
-                              ※ コンテナ内部では texlive標準の~/.texlive2023 以下にキャッシュが置かれます
+└── .texlive2025...............Latexのフォントキャッシュ用です.コンテナUp時に生成されます.
 </pre>
 
 ## Settings of  Makefile
