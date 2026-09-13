@@ -1,6 +1,6 @@
 # opencae-slides
-[![Build Status](https://github.com/ichmy55/beamer-example/actions/workflows/main-push.yml/badge.svg)](https://github.com/ichmy55/beamer-example/actions)
-[![GitHub release](https://img.shields.io/github/release/ichmy55/beamer-example.svg)](https://GitHub.com/ichmy55/cbeamer-example/releases/)
+[![Build Status](https://github.com/ichmy55/opencae-slides/actions/workflows/main-push.yml/badge.svg)](https://github.com/ichmy55/opencae-slides/actions)
+[![GitHub release](https://img.shields.io/github/release/ichmy55/opencae-slides.svg)](https://GitHub.com/ichmy55/opencae-slides/releases/)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
