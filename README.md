@@ -1,7 +1,7 @@
 # opencae-slides
 [![Build Status](https://github.com/ichmy55/opencae-slides/actions/workflows/main-push.yml/badge.svg)](https://github.com/ichmy55/opencae-slides/actions)
 [![GitHub release](https://img.shields.io/github/release/ichmy55/opencae-slides.svg)](https://GitHub.com/ichmy55/opencae-slides/releases/)
-[![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
+[![made-with-beamer](https://img.shields.io/badge/Made%20with-beamer-1f425f.svg)](https://github.com/josephwright/beamer)
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
 ## Overview
@@ -59,7 +59,7 @@ $ git clone --recursive https://github.com/ichmy55/opencae-slides.git
 </pre>
 
 ## Settings of  Makefile
-Makefile中の変数「DEST_PDF」の値を,PDF作成したい勉強会のディレクトリ名に変えてください.
+variables.mk中の変数「DEST_PDF」の値を,PDF作成したい勉強会のディレクトリ名に変えてください.
 ```
 #
 # 作成するスライド名
