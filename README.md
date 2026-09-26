@@ -1,7 +1,7 @@
 # opencae-slides
 [![Build Status](https://github.com/ichmy55/opencae-slides/actions/workflows/main-push.yml/badge.svg)](https://github.com/ichmy55/opencae-slides/actions)
 [![GitHub release](https://img.shields.io/github/release/ichmy55/opencae-slides.svg)](https://GitHub.com/ichmy55/opencae-slides/releases/)
-[![made-with-beamer](https://img.shields.io/badge/Made%20with-beamer-1f425f.svg)](https://github.com/josephwright/beamer)
+[![made-with-beamer](https://img.shields.io/badge/Made%20with-beamer-3333b2.svg)](https://github.com/josephwright/beamer)
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
 ## Overview
